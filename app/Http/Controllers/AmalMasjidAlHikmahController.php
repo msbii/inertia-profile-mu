@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\KategoriKajian;
 use App\Models\StrukturOrganisasi;
 
-class AmalmasjidAlHikmahController extends Controller
+class AmalMasjidAlHikmahController extends Controller
 {
     //
     public function index()
