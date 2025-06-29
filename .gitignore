@@ -22,3 +22,4 @@ yarn-error.log
 /.vscode
 /.zed
 !storage/app/public/post-images/
+!storage/app/public/post-images/.gitkeep
