@@ -1,10 +1,10 @@
 <script setup>
-import CardLineChart from "@/components/Cards/CardLineChart.vue";
-import CardBarChart from "@/components/Cards/CardBarChart.vue";
-import CardPageVisits from "@/components/Cards/CardPageVisits.vue";
-import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
+import CardLineChart from "@/Components/Cards/CardLineChart.vue";
+import CardBarChart from "@/Components/Cards/CardBarChart.vue";
+import CardPageVisits from "@/Components/Cards/CardPageVisits.vue";
+import CardSocialTraffic from "@/Components/Cards/CardSocialTraffic.vue";
 import AdminLayout from "@/shared/Admin.vue";
-import HeaderStats from "@/components/Headers/HeaderStats.vue";
+import HeaderStats from "@/Components/Headers/HeaderStats.vue";
 
 // Inertia layout injection
 defineOptions({
