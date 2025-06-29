@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $totalUsers = User::count();
         
         // Ambil total postingan dari database
-        $totalPosts = post::count();
+        $totalPosts = Post::count();
         
         // Ambil total kajian dari database
         $totalKajians = Kajian::count();
