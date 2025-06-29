@@ -1,9 +1,9 @@
 <script setup>
 import { defineProps } from "vue";
-import HeaderComponent from "@/components/headerComponent.vue";
-import FooterComponent from "@/components/footerComponent.vue";
-import HeadComponent from "@/components/headComponent.vue";
-import ScriptComponent from "@/components/scriptComponent.vue";
+import HeaderComponent from "@/Components/headerComponent.vue";
+import FooterComponent from "@/Components/footerComponent.vue";
+import HeadComponent from "@/Components/headComponent.vue";
+import ScriptComponent from "@/Components/scriptComponent.vue";
 import { usePage, Link } from "@inertiajs/vue3";
 
 defineProps({
