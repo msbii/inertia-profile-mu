@@ -250,13 +250,13 @@
     </Layout>
 </template>
 <script setup>
-import CardTable from "@/components/Cards/CardTable.vue";
+import CardTable from "@/Components/Cards/CardTable.vue";
 import AdminLayout from "@/shared/Admin.vue";
 import { Link, router, usePage } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
 
 import { defineProps } from "vue";
-import TableDropdown from "@/components/Dropdowns/TableDropdown.vue";
+import TableDropdown from "@/Components/Dropdowns/TableDropdown.vue";
 
 import bootstrap from "@/assets/img/bootstrap.jpg";
 import angular from "@/assets/img/angular.jpg";
