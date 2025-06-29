@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+import UserDropdown from "@/Components/Dropdowns/UserDropdown.vue";
 
 import { usePage } from "@inertiajs/vue3";
 

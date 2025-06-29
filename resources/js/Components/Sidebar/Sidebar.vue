@@ -439,8 +439,8 @@
 <script setup>
 import { ref } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";
-import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue";
-import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+import NotificationDropdown from "@/Components/Dropdowns/NotificationDropdown.vue";
+import UserDropdown from "@/Components/Dropdowns/UserDropdown.vue";
 
 // Dropdown toggle untuk sidebar
 const collapseShow = ref("hidden");
