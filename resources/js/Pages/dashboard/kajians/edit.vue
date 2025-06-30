@@ -162,7 +162,7 @@ console.log("KIRIM DATA:", {
 });
 
 function submitForm() {
-    form.put(`/dashboard/posts/${props.post.slug}`, {
+    form.put(`/dashboard/kajian/${props.post.slug}`, {
         preserveScroll: true,
         onSuccess: () => {
             console.log("Post updated");
