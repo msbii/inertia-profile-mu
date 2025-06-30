@@ -22,19 +22,28 @@ const form = useForm({
     oldImage: props.post.image, // Gambar lama
 });
 
-form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-    data: {
-        _method: "put",
-        title: form.title,
-        slug: form.slug,
-        category_id: form.category_id,
-        body: form.body,
-        image: form.image,
-        oldImage: form.oldImage,
-    },
-    forceFormData: true,
-    preserveScroll: true,
-});
+// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
+//     data: {
+//         _method: "put",
+//         title: form.title,
+//         slug: form.slug,
+//         category_id: form.category_id,
+//         body: form.body,
+//         image: form.image,
+//         oldImage: form.oldImage,
+//     },
+//     forceFormData: true,
+//     preserveScroll: true,
+// });
+
+function submitForm() {
+    form.put(`/dashboard/posts/${props.post.slug}`, {
+        preserveScroll: true,
+        onSuccess: () => {
+            console.log("posts updated");
+        },
+    });
+}
 
 function previewImage(e) {
     const file = e.target.files[0];
