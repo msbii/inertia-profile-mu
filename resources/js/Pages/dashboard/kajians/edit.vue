@@ -133,7 +133,7 @@ const form = useForm({
 });
 
 function generateSlug() {
-    fetch(`/dashboard/posts/checkSlug?title=${form.title}`)
+    fetch(`/dashboard/kajian/checkSlug?title=${form.title}`)
         .then((res) => res.json())
         .then((data) => {
             form.slug = data.slug;
