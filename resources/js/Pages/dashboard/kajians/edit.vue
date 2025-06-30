@@ -170,35 +170,6 @@ function submitForm() {
     });
 }
 
-// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-//     data: {
-//         _method: "put",
-//         title: form.title,
-//         slug: form.slug,
-//         category_id: form.category_id,
-//         body: form.body,
-//         image: form.image,
-//         oldImage: form.oldImage,
-//     },
-//     forceFormData: true,
-//     preserveScroll: true,
-//     onSuccess: () => {
-//         console.log("Post updated");
-//     },
-// });
-
-// function submitForm() {
-//     form.put(`/dashboard/posts/${props.post.slug}`, {
-//         // method: "putt",
-//         // _method: "put", // spoof method agar dianggap PUT
-//         forceFormData: true, // wajib agar file ikut terkirim
-//         preserveScroll: true,
-//         onSuccess: () => {
-//             console.log("Post updated");
-//         },
-//     });
-// }
-
 // Refs
 const trixEditorRef = ref(null);
 
