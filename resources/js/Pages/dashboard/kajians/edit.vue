@@ -113,6 +113,11 @@
                         @change="previewDocument"
                         class="w-full border rounded px-3 py-2"
                     />
+                    <input
+                        type="hidden"
+                        name="olddocument"
+                        :value="form.olddocument"
+                    />
                     <div
                         v-if="form.errors.document"
                         class="text-red-500 text-sm mt-1"
@@ -170,6 +175,7 @@ const form = useForm({
     image: null,
     oldImage: props.post?.image || "",
     document: null,
+    olddocument: props.post?.document || "",
 });
 
 function generateSlug() {
@@ -207,6 +213,7 @@ console.log("KIRIM DATA:", {
     image: form.image,
     oldImage: form.oldImage,
     document: form.document,
+    olddocument: form.olddocument,
 });
 
 // Kirim form update
@@ -220,6 +227,7 @@ function submitForm() {
         image: form.image,
         oldImage: form.oldImage,
         document: form.document,
+        olddocument: form.olddocument,
     });
 
     form.put(`/dashboard/kajian/${props.post.slug}`, {

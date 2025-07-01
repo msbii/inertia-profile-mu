@@ -86,16 +86,28 @@ class DashboardKajianController extends Controller
         // // Jika Anda perlu mendapatkan nama file untuk disimpan di database atau menampilkan file, gunakan basename()
         // $nama_document = basename($path);
 
-        // Mengambil file dari request
-        if($request->file('document')){
-
+        if ($request->file('document')) {
             $document = $request->file('document');
-            // Mendapatkan nama asli file
+
+            // Buat nama file yang aman dan unik
             $originalName = time() . '_' . $document->getClientOriginalName();
-            // Menyimpan file dengan nama asli ke folder 'post-document'
-            $path = $document->storeAs('post-document', $originalName);
-            $validateData['document'] = $originalName;
+
+            // Simpan ke folder storage/app/public/post-document/
+            $path = $document->storeAs('public/post-document', $originalName);
+
+            // Simpan hanya 'post-document/namafile.ext' ke database
+            $validateData['document'] = str_replace('public/', '', $path);
         }
+        // Mengambil file dari request
+        // if($request->file('document')){
+
+        //     $document = $request->file('document');
+        //     // Mendapatkan nama asli file
+        //     $originalName = time() . '_' . $document->getClientOriginalName();
+        //     // Menyimpan file dengan nama asli ke folder 'post-document'
+        //     $path = $document->storeAs('post-document', $originalName);
+        //     $validateData['document'] = $originalName;
+        // }
 
         // $document = $request->file('document');
         // // $nama_document = 'Kajian'.date('Ymdhis').'.'.$request->file('document')

@@ -90,12 +90,17 @@
             <article class="my-3" v-html="post.body" />
 
             <!-- Preview Dokumen -->
-            <iframe
-                :src="`/storage/post-document/${post.document}`"
-                width="100%"
-                height="600px"
-                style="border: none"
-            ></iframe>
+            <template v-if="post.document">
+                <iframe
+                    :src="`/storage/post-document/${post.document}`"
+                    width="100%"
+                    height="600px"
+                    style="border: none"
+                ></iframe>
+            </template>
+            <template v-else>
+                <p class="text-red-500">Dokumen tidak tersedia.</p>
+            </template>
         </div>
     </Layout>
 </template>
