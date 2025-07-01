@@ -150,27 +150,27 @@ const props = defineProps({
 
 const previewUrl = ref(null);
 
-const form = useForm({
-    title: props.post.title,
-    slug: props.post.slug,
-    speaker: props.post.speaker,
-    category_id: props.post.category_id,
-    body: props.post.body,
-    image: null,
-    oldImage: props.post.image,
-    document: null,
-});
-
 // const form = useForm({
-//     title: props.post?.title || "",
-//     slug: props.post?.slug || "",
-//     speaker: props.post?.speaker || "",
-//     category_id: props.post?.category_id || "",
-//     body: props.post?.body || "",
+//     title: props.post.title,
+//     slug: props.post.slug,
+//     speaker: props.post.speaker,
+//     category_id: props.post.category_id,
+//     body: props.post.body,
 //     image: null,
-//     oldImage: props.post?.image || "",
+//     oldImage: props.post.image,
 //     document: null,
 // });
+
+const form = useForm({
+    title: props.post?.title || "",
+    slug: props.post?.slug || "",
+    speaker: props.post?.speaker || "",
+    category_id: props.post?.category_id || "",
+    body: props.post?.body || "",
+    image: null,
+    oldImage: props.post?.image || "",
+    document: null,
+});
 
 function generateSlug() {
     fetch(`/dashboard/kajian/checkSlug?title=${form.title}`)
@@ -209,15 +209,27 @@ console.log("KIRIM DATA:", {
     document: form.document,
 });
 
+// Kirim form update
 function submitForm() {
+    console.log("🔍 Form Data:", {
+        title: form.title,
+        slug: form.slug,
+        speaker: form.speaker,
+        category_id: form.category_id,
+        body: form.body,
+        image: form.image,
+        oldImage: form.oldImage,
+        document: form.document,
+    });
+
     form.put(`/dashboard/kajian/${props.post.slug}`, {
         forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("Post updated");
+            console.log("✅ Post updated");
         },
         onError: (err) => {
-            console.error("Gagal update:", err);
+            console.error("❌ Gagal update:", err);
         },
     });
 }
