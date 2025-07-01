@@ -140,13 +140,34 @@ console.log("KIRIM DATA:", {
 });
 
 function submitForm() {
+    console.log("Form yang dikirim:", {
+        title: form.title,
+        slug: form.slug,
+        body: form.body,
+        image: form.image,
+        oldImage: form.oldImage,
+    });
+
     form.put(`/dashboard/sejarah/${props.post.slug}`, {
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("Post updated");
+            console.log("✅ Post berhasil diupdate");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }
+
+// function submitForm() {
+//     form.put(`/dashboard/sejarah/${props.post.slug}`, {
+//         preserveScroll: true,
+//         onSuccess: () => {
+//             console.log("Post updated");
+//         },
+//     });
+// }
 
 // form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
 //     data: {
