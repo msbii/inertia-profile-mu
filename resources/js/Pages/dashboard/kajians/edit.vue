@@ -150,25 +150,27 @@ const props = defineProps({
 
 const previewUrl = ref(null);
 
-// const form = useForm({
-//     title: props.post.title,
-//     slug: props.post.slug,
-//     category_id: props.post.category_id,
-//     body: props.post.body,
-//     image: null,
-//     oldImage: props.post.image,
-// });
-
 const form = useForm({
-    title: props.post?.title || "",
-    slug: props.post?.slug || "",
-    speaker: props.post?.speaker || "",
-    category_id: props.post?.category_id || "",
-    body: props.post?.body || "",
+    title: props.post.title,
+    slug: props.post.slug,
+    speaker: props.post.speaker,
+    category_id: props.post.category_id,
+    body: props.post.body,
     image: null,
-    oldImage: props.post?.image || "",
+    oldImage: props.post.image,
     document: null,
 });
+
+// const form = useForm({
+//     title: props.post?.title || "",
+//     slug: props.post?.slug || "",
+//     speaker: props.post?.speaker || "",
+//     category_id: props.post?.category_id || "",
+//     body: props.post?.body || "",
+//     image: null,
+//     oldImage: props.post?.image || "",
+//     document: null,
+// });
 
 function generateSlug() {
     fetch(`/dashboard/kajian/checkSlug?title=${form.title}`)
