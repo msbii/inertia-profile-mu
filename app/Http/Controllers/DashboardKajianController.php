@@ -142,6 +142,7 @@ class DashboardKajianController extends Controller
     public function update(Request $request, Kajian $kajian)
     {
         //
+        dd($kajian);
         $rules =[
             'title' => 'required|max:255',
             'speaker' => 'max:55',
