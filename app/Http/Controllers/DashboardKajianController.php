@@ -98,6 +98,7 @@ class DashboardKajianController extends Controller
             // Simpan hanya 'post-document/namafile.ext' ke database
             $validateData['document'] = str_replace('public/post-document/', '', $path);
         }
+        dd($path)
         // Mengambil file dari request
         // if($request->file('document')){
 
