@@ -29,6 +29,23 @@
                 <input type="hidden" v-model="form.slug" />
 
                 <div>
+                    <label for="speaker" class="block font-medium"
+                        >Speaker</label
+                    >
+                    <input
+                        v-model="form.speaker"
+                        type="text"
+                        id="speaker"
+                        class="w-full border rounded p-2"
+                        :class="{ 'border-red-500': form.errors.speaker }"
+                        @change="generateSlug"
+                    />
+                    <p v-if="form.errors.speaker" class="text-red-500 text-sm">
+                        {{ form.errors.speaker }}
+                    </p>
+                </div>
+
+                <div>
                     <label for="category_id" class="block font-medium"
                         >Kategori</label
                     >
@@ -85,6 +102,25 @@
                     </p>
                 </div>
 
+                <!-- Dokumen -->
+                <div class="mb-4">
+                    <label for="document" class="block font-semibold mb-1"
+                        >Dokumen Kajian</label
+                    >
+                    <input
+                        type="file"
+                        id="document"
+                        @change="previewDocument"
+                        class="w-full border rounded px-3 py-2"
+                    />
+                    <div
+                        v-if="form.errors.document"
+                        class="text-red-500 text-sm mt-1"
+                    >
+                        {{ form.errors.document }}
+                    </div>
+                </div>
+
                 <!-- <button
                     type="submit"
                     class="bg-blue-600 text-white px-4 py-2 rounded"
@@ -126,10 +162,12 @@ const previewUrl = ref(null);
 const form = useForm({
     title: props.post?.title || "",
     slug: props.post?.slug || "",
+    speaker: props.post?.speaker || "",
     category_id: props.post?.category_id || "",
     body: props.post?.body || "",
     image: null,
     oldImage: props.post?.image || "",
+    document: null,
 });
 
 function generateSlug() {
@@ -155,10 +193,12 @@ function previewImage(e) {
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
+    speaker: form.speaker,
     category_id: form.category_id,
     body: form.body,
     image: form.image,
     oldImage: form.oldImage,
+    document: form.document,
 });
 
 function submitForm() {
