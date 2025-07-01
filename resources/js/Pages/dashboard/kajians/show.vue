@@ -88,6 +88,14 @@
             </div>
 
             <article class="my-3" v-html="post.body" />
+
+            <!-- Preview Dokumen -->
+            <iframe
+                :src="`/storage/post-document/${post.document}`"
+                width="100%"
+                height="600px"
+                style="border: none"
+            ></iframe>
         </div>
     </Layout>
 </template>
