@@ -134,7 +134,6 @@ function previewImage(e) {
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
-    category_id: form.category_id,
     body: form.body,
     image: form.image,
     oldImage: form.oldImage,
