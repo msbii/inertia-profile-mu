@@ -124,7 +124,6 @@ class DashboardKajianController extends Controller
         Kajian::create($validateData);
 
         return redirect('/dashboard/kajian')->with('success', 'Kajian Baru Telah Ditambahkan!');
-        dd($path)
     }
 
     /**
