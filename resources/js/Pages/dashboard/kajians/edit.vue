@@ -190,6 +190,12 @@ function previewImage(e) {
     console.log("File dipilih:", file);
 }
 
+function previewDocument(e) {
+    const file = e.target.files[0];
+    form.document = file;
+    console.log("Dokumen dipilih:", file);
+}
+
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
@@ -203,12 +209,25 @@ console.log("KIRIM DATA:", {
 
 function submitForm() {
     form.put(`/dashboard/kajian/${props.post.slug}`, {
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
             console.log("Post updated");
         },
+        onError: (err) => {
+            console.error("Gagal update:", err);
+        },
     });
 }
+
+// function submitForm() {
+//     form.put(`/dashboard/kajian/${props.post.slug}`, {
+//         preserveScroll: true,
+//         onSuccess: () => {
+//             console.log("Post updated");
+//         },
+//     });
+// }
 
 // form.submit("post", `/dashboard/posts/${props.post.slug}`, {
 //     data: {
