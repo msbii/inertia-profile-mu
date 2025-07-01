@@ -93,10 +93,10 @@ class DashboardKajianController extends Controller
             $originalName = time() . '_' . $document->getClientOriginalName();
 
             // Simpan ke folder storage/app/public/post-document/
-            $validateData['document'] = $path = $document->storeAs('public/post-document', $originalName);
+            $path = $document->storeAs('public/post-document', $originalName);
 
             // Simpan hanya 'post-document/namafile.ext' ke database
-            // $validateData['document'] = str_replace('public/post-document', '', $path);
+            $validateData['document'] = str_replace('public/post-document/', '', $path);
         }
         // Mengambil file dari request
         // if($request->file('document')){
