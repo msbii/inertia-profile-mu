@@ -114,7 +114,7 @@ class DashboardSejarahController extends Controller
             'image' => 'image|file|max:2048',
             'body' => 'required',
         ];
-        dd('test');
+        
 
         // validasi data
         $validateData = $request->validate($rules);
@@ -128,6 +128,8 @@ class DashboardSejarahController extends Controller
             }
             $validateData['image'] = $request->file('image')->store('post-images','public');
         }
+
+        dd('test');
 
         // Menyimpan data ke dalamm post
         $validateData['user_id'] = auth()->id();
