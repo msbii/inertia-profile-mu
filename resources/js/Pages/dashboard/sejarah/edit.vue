@@ -148,8 +148,16 @@ function submitForm() {
         oldImage: form.oldImage,
     });
 
-    form.put(`/dashboard/sejarah/${props.post.slug}`, {
-        forceFormData: true,
+    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+        data: {
+            _method: "put", // Spoofing method
+            title: form.title,
+            slug: form.slug,
+            body: form.body,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
+        forceFormData: true, // WAJIB agar file ikut terkirim
         preserveScroll: true,
         onSuccess: () => {
             console.log("✅ Post berhasil diupdate");
