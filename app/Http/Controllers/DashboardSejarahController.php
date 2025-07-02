@@ -114,11 +114,11 @@ class DashboardSejarahController extends Controller
             'image' => 'image|file|max:2048',
             'body' => 'required',
         ];
-        dd("test");
+        
         // validasi data
         $validateData = $request->validate($rules);
 
-        
+        dd($validateData);
         // check jika img tidak ada maka unsplash
         if ($request->file('image')) {
             // Menghapus data foto lama supaya berganti baru
