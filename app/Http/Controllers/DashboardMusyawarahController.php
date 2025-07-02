@@ -127,7 +127,7 @@ class DashboardMusyawarahController extends Controller
         $rules =[
             'title' => 'required|max:255',
             'lingkup_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'time' => 'required',
             'location' => 'required',
             'agenda' => 'required',
