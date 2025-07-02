@@ -114,7 +114,7 @@
                     <trix-editor
                         input="agenda"
                         @trix-change="updateagenda"
-                        ref="trixEditorRef"
+                        ref="trixEditorRefagenda"
                     ></trix-editor>
                     <p v-if="form.errors.agenda" class="text-red-500 text-sm">
                         {{ form.errors.agenda }}
@@ -134,7 +134,7 @@
                     <trix-editor
                         input="hasil"
                         @trix-change="updatehasil"
-                        ref="trixEditorRef"
+                        ref="trixEditorRefhasil"
                     ></trix-editor>
                     <p v-if="form.errors.hasil" class="text-red-500 text-sm">
                         {{ form.errors.hasil }}
@@ -313,7 +313,7 @@ onMounted(() => {
 
         // Tunggu nextTick agar Trix sudah siap
         setTimeout(() => {
-            const editor = trixEditorRef.value?.editor;
+            const editor = trixEditorRefagenda.value?.editor;
             if (editor) {
                 editor.loadHTML(form.agenda); // 🌟 Ini menampilkan konten lama ke editor
             }
@@ -334,7 +334,7 @@ onMounted(() => {
 
         // Tunggu nextTick agar Trix sudah siap
         setTimeout(() => {
-            const editor = trixEditorRef.value?.editor;
+            const editor = trixEditorRefhasil.value?.editor;
             if (editor) {
                 editor.loadHTML(form.hasil); // 🌟 Ini menampilkan konten lama ke editor
             }
