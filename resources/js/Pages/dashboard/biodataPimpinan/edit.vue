@@ -16,25 +16,42 @@ const previewUrl = ref(null);
 const form = useForm({
     title: props.post.title,
     slug: props.post.slug,
-    category_id: props.post.category_id,
-    body: props.post.body,
+    position: props.post.position,
+    biography: props.post.biography,
     image: null, // File baru
     oldImage: props.post.image, // Gambar lama
 });
 
-form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-    data: {
-        _method: "put",
+function submitForm() {
+    console.log("KIRIM:", {
         title: form.title,
         slug: form.slug,
-        category_id: form.category_id,
-        body: form.body,
+        position: form.position,
+        biography: form.biography,
         image: form.image,
         oldImage: form.oldImage,
-    },
-    forceFormData: true,
-    preserveScroll: true,
-});
+    });
+
+    form.submit("post", `/dashboard/biodataPimpinan/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            position: form.position,
+            biography: form.biography,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
+        forceFormData: true,
+        preserveScroll: true,
+        onSuccess: () => {
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
+        },
+    });
+}
 
 function previewImage(e) {
     const file = e.target.files[0];
@@ -50,7 +67,7 @@ function previewImage(e) {
 const trixEditorRef = ref(null);
 
 function updateBody(e) {
-    form.body = e.target.innerHTML;
+    form.biography = e.target.innerHTML;
 }
 
 onMounted(() => {
@@ -58,8 +75,8 @@ onMounted(() => {
 
     setTimeout(() => {
         const editor = trixEditorRef.value?.editor;
-        if (editor && form.body) {
-            editor.loadHTML(form.body);
+        if (editor && form.biography) {
+            editor.loadHTML(form.biography);
         }
     }, 100);
 });
@@ -79,7 +96,7 @@ onMounted(() => {
                 class="space-y-6"
             >
                 <div>
-                    <label for="title" class="block font-medium">Judul</label>
+                    <label for="title" class="block font-medium">Nama</label>
                     <input
                         v-model="form.title"
                         type="text"
@@ -97,11 +114,11 @@ onMounted(() => {
 
                 <div>
                     <label for="category_id" class="block font-medium"
-                        >Kategori</label
+                        >Lokasi Jabatan</label
                     >
                     <select
-                        v-model="form.category_id"
-                        id="category_id"
+                        v-model="form.position"
+                        id="position"
                         class="w-full border rounded p-2"
                     >
                         <option
@@ -135,20 +152,23 @@ onMounted(() => {
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-1">Isi Postingan</label>
+                    <label class="block font-medium mb-1">Biografi</label>
                     <input
-                        id="body"
+                        id="biography"
                         type="hidden"
-                        v-model="form.body"
-                        name="body"
+                        v-model="form.biography"
+                        name="biography"
                     />
                     <trix-editor
-                        input="body"
+                        input="biography"
                         @trix-change="updateBody"
                         ref="trixEditorRef"
                     ></trix-editor>
-                    <p v-if="form.errors.body" class="text-red-500 text-sm">
-                        {{ form.errors.body }}
+                    <p
+                        v-if="form.errors.biography"
+                        class="text-red-500 text-sm"
+                    >
+                        {{ form.errors.biography }}
                     </p>
                 </div>
 
