@@ -185,7 +185,7 @@ function submitForm() {
         oldImage: form.oldImage,
     });
 
-    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+    form.submit("post", `/dashboard/pelaksanaanProgram/${props.post.slug}`, {
         data: {
             _method: "put",
             title: form.title,
