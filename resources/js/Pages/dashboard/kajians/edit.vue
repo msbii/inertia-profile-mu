@@ -165,7 +165,7 @@ import "trix/dist/trix.css";
 
 const props = defineProps({
     post: Object,
-    categories: Array,
+    categories: Object,
 });
 
 const previewUrl = ref(null);
@@ -228,7 +228,7 @@ console.log("KIRIM DATA:", {
 
 // Kirim form update
 function submitForm() {
-    console.log("🔍 Form Data:", {
+    console.log("KIRIM:", {
         title: form.title,
         slug: form.slug,
         speaker: form.speaker,
@@ -240,55 +240,29 @@ function submitForm() {
         olddocument: form.olddocument,
     });
 
-    form.put(`/dashboard/kajian/${props.post.slug}`, {
+    form.submit("post", `/dashboard/kajian/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            speaker: form.speaker,
+            category_id: form.category_id,
+            body: form.body,
+            image: form.image,
+            oldImage: form.oldImage,
+            document: form.document,
+            olddocument: form.olddocument,
+        },
         forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("✅ Post updated");
+            console.log("✅ Post updated!");
         },
-        onError: (err) => {
-            console.error("❌ Gagal update:", err);
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }
-
-// function submitForm() {
-//     form.put(`/dashboard/kajian/${props.post.slug}`, {
-//         preserveScroll: true,
-//         onSuccess: () => {
-//             console.log("Post updated");
-//         },
-//     });
-// }
-
-// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-//     data: {
-//         _method: "put",
-//         title: form.title,
-//         slug: form.slug,
-//         category_id: form.category_id,
-//         body: form.body,
-//         image: form.image,
-//         oldImage: form.oldImage,
-//     },
-//     forceFormData: true,
-//     preserveScroll: true,
-//     onSuccess: () => {
-//         console.log("Post updated");
-//     },
-// });
-
-// function submitForm() {
-//     form.put(`/dashboard/posts/${props.post.slug}`, {
-//         // method: "putt",
-//         // _method: "put", // spoof method agar dianggap PUT
-//         forceFormData: true, // wajib agar file ikut terkirim
-//         preserveScroll: true,
-//         onSuccess: () => {
-//             console.log("Post updated");
-//         },
-//     });
-// }
 
 // Refs
 const trixEditorRef = ref(null);
