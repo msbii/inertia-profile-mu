@@ -121,7 +121,7 @@ class DashboardStrukturController extends Controller
         $rules =[
             'title' => 'required|max:255',
             'kategori_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'nullable|image|file|max:2048',
         ];
 
         if ($request->slug != $sK->slug) {
@@ -145,6 +145,9 @@ class DashboardStrukturController extends Controller
             // $validateData['image'] = $originalName;
             $validateData['image'] = 'post-images/' . $originalName;
             // $validateData['image'] = $request->file('image')->store('post-images');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
         // Update data

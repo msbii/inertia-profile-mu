@@ -16,25 +16,53 @@ const previewUrl = ref(null);
 const form = useForm({
     title: props.post.title,
     slug: props.post.slug,
-    category_id: props.post.category_id,
-    body: props.post.body,
+    kategori_id: props.post.kategori_id,
     image: null, // File baru
     oldImage: props.post.image, // Gambar lama
 });
 
-form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-    data: {
-        _method: "put",
+function submitForm() {
+    console.log("KIRIM:", {
         title: form.title,
         slug: form.slug,
-        category_id: form.category_id,
-        body: form.body,
+        kategori_id: form.kategori_id,
         image: form.image,
         oldImage: form.oldImage,
-    },
-    forceFormData: true,
-    preserveScroll: true,
-});
+    });
+
+    form.submit("post", `/dashboard/struktur/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            kategori_id: form.kategori_id,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
+        forceFormData: true,
+        preserveScroll: true,
+        onSuccess: () => {
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
+        },
+    });
+}
+
+// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
+//     data: {
+//         _method: "put",
+//         title: form.title,
+//         slug: form.slug,
+//         category_id: form.category_id,
+//         body: form.body,
+//         image: form.image,
+//         oldImage: form.oldImage,
+//     },
+//     forceFormData: true,
+//     preserveScroll: true,
+// });
 
 function previewImage(e) {
     const file = e.target.files[0];
@@ -46,23 +74,6 @@ function previewImage(e) {
     };
     reader.readAsDataURL(file);
 }
-
-const trixEditorRef = ref(null);
-
-function updateBody(e) {
-    form.body = e.target.innerHTML;
-}
-
-onMounted(() => {
-    document.addEventListener("trix-file-accept", (e) => e.preventDefault());
-
-    setTimeout(() => {
-        const editor = trixEditorRef.value?.editor;
-        if (editor && form.body) {
-            editor.loadHTML(form.body);
-        }
-    }, 100);
-});
 </script>
 
 <template>
@@ -100,8 +111,8 @@ onMounted(() => {
                         >Kategori</label
                     >
                     <select
-                        v-model="form.category_id"
-                        id="category_id"
+                        v-model="form.kategori_id"
+                        id="kategori_id"
                         class="w-full border rounded p-2"
                     >
                         <option
@@ -132,24 +143,6 @@ onMounted(() => {
                         name="oldImage"
                         :value="form.oldImage"
                     /> -->
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-1">Isi Postingan</label>
-                    <input
-                        id="body"
-                        type="hidden"
-                        v-model="form.body"
-                        name="body"
-                    />
-                    <trix-editor
-                        input="body"
-                        @trix-change="updateBody"
-                        ref="trixEditorRef"
-                    ></trix-editor>
-                    <p v-if="form.errors.body" class="text-red-500 text-sm">
-                        {{ form.errors.body }}
-                    </p>
                 </div>
 
                 <!-- <button
