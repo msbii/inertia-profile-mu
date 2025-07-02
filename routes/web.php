@@ -210,6 +210,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/dashboard/sejarah/checkSlug', [DashboardSejarahController::class,'checkSlug']);
 Route::resource('/dashboard/sejarah', DashboardSejarahController::class);
+// Untuk spoof method PUT dari form.submit("post")
+Route::post('/dashboard/sejarah/{sejarah}', [DashboardSejarahController::class, 'update']);
 
 Route::get('/dashboard/kajian/checkSlug', [DashboardKajianController::class,'checkSlug']);
 Route::resource('/dashboard/kajian', DashboardKajianController::class);

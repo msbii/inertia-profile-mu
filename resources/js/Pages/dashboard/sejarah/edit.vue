@@ -140,7 +140,7 @@ console.log("KIRIM DATA:", {
 });
 
 function submitForm() {
-    console.log("Form yang dikirim:", {
+    console.log("KIRIM:", {
         title: form.title,
         slug: form.slug,
         body: form.body,
@@ -148,11 +148,19 @@ function submitForm() {
         oldImage: form.oldImage,
     });
 
-    form.put(`/dashboard/sejarah/${props.post.slug}`, {
+    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            body: form.body,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
         forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("✅ Post berhasil diupdate");
+            console.log("✅ Post updated!");
         },
         onError: (errors) => {
             console.error("❌ Gagal update:", errors);
