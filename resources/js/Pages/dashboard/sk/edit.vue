@@ -90,7 +90,7 @@
                         style="border: none"
                     ></iframe>
                     <iframe
-                        v-else-if="form.oldImage"
+                        v-else-if="form.olddocument"
                         :src="`/storage/post-document/${form.olddocument}`"
                         width="50%"
                         height="300px"
