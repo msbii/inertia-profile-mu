@@ -29,25 +29,6 @@
                 <input type="hidden" v-model="form.slug" />
 
                 <div>
-                    <label for="category_id" class="block font-medium"
-                        >Kategori</label
-                    >
-                    <select
-                        v-model="form.category_id"
-                        id="category_id"
-                        class="w-full border rounded p-2"
-                    >
-                        <option
-                            v-for="category in categories"
-                            :key="category.id"
-                            :value="category.id"
-                        >
-                            {{ category.name }}
-                        </option>
-                    </select>
-                </div>
-
-                <div>
                     <label for="image" class="block font-medium">Gambar</label>
                     <input type="file" @change="previewImage" />
                     <img
@@ -68,20 +49,95 @@
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-1">Isi Postingan</label>
+                    <label for="category" class="block font-medium"
+                        >Lingkup</label
+                    >
+                    <select
+                        v-model="form.lingkup_id"
+                        id="lingkup_id"
+                        class="w-full border rounded p-2"
+                    >
+                        <option
+                            v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id"
+                        >
+                            {{ category.name }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="time" class="form-label"
+                        >Tanggal & Waktu Musyawarah</label
+                    >
+                    <input
+                        type="datetime-local"
+                        class="form-control"
+                        :class="{ 'is-invalid': form.errors.time }"
+                        id="time"
+                        name="time"
+                        required
+                        autofocus
+                        v-model="form.time"
+                    />
+                    <div v-if="form.errors.time" class="invalid-feedback">
+                        {{ form.errors.time }}
+                    </div>
+                </div>
+
+                <div>
+                    <label for="title" class="block font-medium"
+                        >Lokasi Musyawarah</label
+                    >
+                    <input
+                        v-model="form.location"
+                        type="text"
+                        id="location"
+                        class="w-full border rounded p-2"
+                        :class="{ 'border-red-500': form.errors.location }"
+                        @change="generateSlug"
+                    />
+                    <p v-if="form.errors.location" class="text-red-500 text-sm">
+                        {{ form.errors.location }}
+                    </p>
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1">Agenda</label>
                     <input
                         id="body"
                         type="hidden"
-                        v-model="form.body"
-                        name="body"
+                        v-model="form.agenda"
+                        name="agenda"
                     />
                     <trix-editor
-                        input="body"
-                        @trix-change="updateBody"
+                        input="agenda"
+                        @trix-change="updateagenda"
                         ref="trixEditorRef"
                     ></trix-editor>
-                    <p v-if="form.errors.body" class="text-red-500 text-sm">
-                        {{ form.errors.body }}
+                    <p v-if="form.errors.agenda" class="text-red-500 text-sm">
+                        {{ form.errors.agenda }}
+                    </p>
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1"
+                        >Hasil Musyawarah</label
+                    >
+                    <input
+                        id="body"
+                        type="hidden"
+                        v-model="form.hasil"
+                        name="hasil"
+                    />
+                    <trix-editor
+                        input="hasil"
+                        @trix-change="updatehasil"
+                        ref="trixEditorRef"
+                    ></trix-editor>
+                    <p v-if="form.errors.hasil" class="text-red-500 text-sm">
+                        {{ form.errors.hasil }}
                     </p>
                 </div>
 
@@ -114,26 +170,20 @@ const props = defineProps({
 
 const previewUrl = ref(null);
 
-// const form = useForm({
-//     title: props.post.title,
-//     slug: props.post.slug,
-//     category_id: props.post.category_id,
-//     body: props.post.body,
-//     image: null,
-//     oldImage: props.post.image,
-// });
-
 const form = useForm({
     title: props.post?.title || "",
     slug: props.post?.slug || "",
-    category_id: props.post?.category_id || "",
-    body: props.post?.body || "",
+    lingkup_id: props.post?.lingkup_id || "",
     image: null,
     oldImage: props.post?.image || "",
+    time: props.post?.time || "",
+    location: props.post?.location || "",
+    agenda: props.post?.agenda || "",
+    hasil: props.post?.hasil || "",
 });
 
 function generateSlug() {
-    fetch(`/dashboard/posts/checkSlug?title=${form.title}`)
+    fetch(`/dashboard/musyawarah/checkSlug?title=${form.title}`)
         .then((res) => res.json())
         .then((data) => {
             form.slug = data.slug;
@@ -155,22 +205,62 @@ function previewImage(e) {
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
-    category_id: form.category_id,
-    body: form.body,
+    lingkup_id: form.lingkup_id,
     image: form.image,
     oldImage: form.oldImage,
+    time: form.time,
+    location: form.location,
+    agenda: form.agenda,
+    hasil: form.hasil,
 });
 
 function submitForm() {
-    form.put(`/dashboard/posts/${props.post.slug}`, {
+    console.log("KIRIM:", {
+        title: form.title,
+        slug: form.slug,
+        lingkup_id: form.lingkup_id,
+        image: form.image,
+        oldImage: form.oldImage,
+        time: form.time,
+        location: form.location,
+        agenda: form.agenda,
+        hasil: form.hasil,
+    });
+
+    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            lingkup_id: form.lingkup_id,
+            image: form.image,
+            oldImage: form.oldImage,
+            time: form.time,
+            location: form.location,
+            agenda: form.agenda,
+            hasil: form.hasil,
+        },
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("Post updated");
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }
 
-// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
+// function submitForm() {
+//     form.put(`/dashboard/musyawarah/${props.post.slug}`, {
+//         preserveScroll: true,
+//         onSuccess: () => {
+//             console.log("Post updated");
+//         },
+//     });
+// }
+
+// form.submit("post", `/dashboard/musyawarah/${props.post.slug}`, {
 //     data: {
 //         _method: "put",
 //         title: form.title,

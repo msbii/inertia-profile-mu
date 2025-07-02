@@ -155,6 +155,9 @@ class DashboardMusyawarahController extends Controller
             // $validateData['image'] = $originalName;
             $validateData['image'] = 'post-images/' . $originalName;
             // $validateData['image'] = $request->file('image')->store('post-images');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
         // Update data
