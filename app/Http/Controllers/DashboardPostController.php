@@ -111,63 +111,6 @@ class DashboardPostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updated(Request $request, Post $post)
-    {
-        //
-        // dd($request->all());
-        $rules =[
-            'title' => 'required|max:255',
-            'category_id' => 'required',
-            'image' => 'nullable|image|file|max:2048',
-            'body' => 'required'
-        ];
-
-        if ($request->slug != $post->slug) {
-            $rules['slug'] = 'required|unique:posts';//tidak dimasukan validasi  karna mengatasi unique
-        }
-
-        try {
-            $validateData = $request->validate($rules);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            dd($e->errors()); // tampilkan semua error validasinya
-        }
-
-        // validasi data
-        $validateData = $request->validate($rules);
-        
-        
-        // check jika img tidak ada maka unsplash
-        // if ($request->file('image')) {
-        //     // Menghapus data foto lama supaya berganti baru
-        //     if ($request->oldImage) {
-        //         Storage::delete($request->oldImage);
-        //     }
-        //     $validateData['image'] = $request->file('image')->store('post-images','public');
-        // }
-
-         // check jika img tidak ada maka unsplash
-        if ($request->file('image')) {
-            // Menghapus data foto lama supaya berganti baru
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
-            $validateData['image'] = $request->file('image')->store('post-images', 'public');
-        } else {
-            // Jika tidak upload baru, gunakan gambar lama
-            $validateData['image'] = $request->oldImage;
-        }
-
-        // Menyimpan data ke dalamm post
-        $validateData['user_id'] = auth()->id();
-        $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-        
-        Post::where('id', $post->id) 
-            ->update($validateData);
-
-        return redirect('/dashboard/posts')->with('success', 'Posting telah diperbarui!');
-   
-    }
-
     public function update(Request $request, Post $post)
     {
         // dd($request->method(), $request->all());
@@ -190,6 +133,9 @@ class DashboardPostController extends Controller
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('post-images', 'public');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
         $validatedData['user_id'] = auth()->id();

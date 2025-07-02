@@ -26,7 +26,7 @@
                                 >
                                     Card Tables
                                 </h3> -->
-                                <Link href="/dashboard/user/create">
+                                <!-- <Link href="/dashboard/user/create">
                                     <button
                                         type="button"
                                         class="btn btn-success my-2"
@@ -34,7 +34,7 @@
                                         <i class="fas fa-plus"></i> Buat
                                         Postingan Baru
                                     </button>
-                                </Link>
+                                </Link> -->
                                 <form @submit.prevent="submit">
                                     <input
                                         v-model="search"

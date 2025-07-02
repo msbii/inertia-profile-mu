@@ -22,25 +22,33 @@ const form = useForm({
     oldImage: props.post.image, // Gambar lama
 });
 
-// form.submit("post", `/dashboard/posts/${props.post.slug}`, {
-//     data: {
-//         _method: "put",
-//         title: form.title,
-//         slug: form.slug,
-//         category_id: form.category_id,
-//         body: form.body,
-//         image: form.image,
-//         oldImage: form.oldImage,
-//     },
-//     forceFormData: true,
-//     preserveScroll: true,
-// });
-
 function submitForm() {
-    form.put(`/dashboard/posts/${props.post.slug}`, {
+    console.log("KIRIM:", {
+        title: form.title,
+        slug: form.slug,
+        category_id: form.category_id,
+        body: form.body,
+        image: form.image,
+        oldImage: form.oldImage,
+    });
+
+    form.submit("post", `/dashboard/posts/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            category_id: form.category_id,
+            body: form.body,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("posts updated");
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }

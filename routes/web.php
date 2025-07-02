@@ -184,8 +184,8 @@ Route::get('/download-image/{filename}', [DashboardController::class, 'downloadI
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
 // Route resource untuk dashboard posts
 Route::resource('/dashboard/posts', DashboardPostController::class);
-// Route::post('/dashboard/posts/{slug}', [DashboardPostController::class, 'update']);
-// Route::put('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'update']);
+// Untuk spoof method PUT dari form.submit("post")
+Route::post('/dashboard/posts/{post}', [DashboardPostController::class, 'update']);
 
 Route::get('/dashboard/categories/checkSlug', [DashboardCategoriesController::class,'checkSlug']);
 Route::resource('/dashboard/categories', DashboardCategoriesController::class);
