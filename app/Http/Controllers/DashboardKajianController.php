@@ -88,34 +88,10 @@ class DashboardKajianController extends Controller
 
         if ($request->file('document')) {
             $document = $request->file('document');
-
-            // Buat nama file yang aman dan unik
-            $originalName = time() . '_' . $document->getClientOriginalName();
-
-            // Simpan ke folder storage/app/public/post-document/
-            $path = $document->storeAs('public/post-document', $originalName);
-
-            // Simpan hanya 'post-document/namafile.ext' ke database
-            $validateData['document'] = str_replace('public/post-document/', '', $path);
+            $originalName = time() . '_' . $document->getClientOriginalName(); // Nama asli file dengan timestamp
+            $path = $document->storeAs('post-document', $originalName, 'public'); // Simpan ke folder public
+            $validateData['document'] = $originalName; // Simpan nama file ke database
         }
-        
-        // Mengambil file dari request
-        // if($request->file('document')){
-
-        //     $document = $request->file('document');
-        //     // Mendapatkan nama asli file
-        //     $originalName = time() . '_' . $document->getClientOriginalName();
-        //     // Menyimpan file dengan nama asli ke folder 'post-document'
-        //     $path = $document->storeAs('post-document', $originalName);
-        //     $validateData['document'] = $originalName;
-        // }
-
-        // $document = $request->file('document');
-        // // $nama_document = 'Kajian'.date('Ymdhis').'.'.$request->file('document')
-        // // ->getClientOriginalExtension();
-        // // Menambahkan timestamp untuk mencegah nama file duplikat
-        // $nama_document = time() . '_' . $document->getClientOriginalName();
-        // $document->move('dokumen/',$nama_document);
 
         // Menyimpan data ke dalamm post
         $validateData['user_id'] = auth()->id();
@@ -160,9 +136,9 @@ class DashboardKajianController extends Controller
             'title' => 'required|max:255',
             'speaker' => 'max:55',
             'category_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'nullable|image|file|max:2048',
             'body' => 'required',
-            'document'=> 'mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
+            'document'=> 'nullable|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         ];
 
         if ($request->slug != $kajian->slug) {
@@ -171,7 +147,6 @@ class DashboardKajianController extends Controller
 
         // validasi data
         $validateData = $request->validate($rules);
-dd('test');
         
         // check jika img tidak ada maka unsplash
         if ($request->file('image')) {
@@ -180,16 +155,25 @@ dd('test');
                 Storage::delete($request->oldImage);
             }
             $validateData['image'] = $request->file('image')->store('post-images');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
+        // Jika ada file baru
         if ($request->file('document')) {
-            // Mengambil file dari request
+            // Hapus file lama jika ada
+            if ($kajian->document) {
+                Storage::disk('public')->delete('post-document/' . $kajian->document);
+            }
+            // Simpan file baru
             $document = $request->file('document');
-            // Mendapatkan nama asli file
             $originalName = time() . '_' . $document->getClientOriginalName();
-            // Menyimpan file dengan nama asli ke folder 'post-document'
-            $path = $document->storeAs('post-document', $originalName);
+            $path = $document->storeAs('post-document', $originalName, 'public');
             $validateData['document'] = $originalName;
+        }else {
+            // Gunakan gambar lama
+            $validateData['document'] = $request->olddocument;
         }
         
         // Menyimpan data ke dalamm post

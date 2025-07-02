@@ -144,7 +144,7 @@ const previewUrl = ref(null);
 
 function previewDocument(e) {
     const file = e.target.files[0];
-    form.image = file;
+    form.document = file;
 
     const reader = new FileReader();
     reader.onload = (e) => {

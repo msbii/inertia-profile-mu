@@ -216,6 +216,8 @@ Route::post('/dashboard/sejarah/{sejarah}', [DashboardSejarahController::class, 
 
 Route::get('/dashboard/kajian/checkSlug', [DashboardKajianController::class,'checkSlug']);
 Route::resource('/dashboard/kajian', DashboardKajianController::class);
+// Untuk spoof method PUT dari form.submit("post")
+Route::post('/dashboard/kajian/{kajian}', [DashboardKajianController::class, 'update']);
 
 Route::get('/dashboard/sk/checkSlug', [DashboardSKController::class,'checkSlug']);
 Route::resource('/dashboard/sk', DashboardSKController::class);

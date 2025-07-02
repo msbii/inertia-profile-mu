@@ -131,7 +131,7 @@
                     <input
                         type="file"
                         id="document"
-                        @change="previewDocument"
+                        @change="handleFileUpload"
                         class="w-full border rounded px-3 py-2"
                     />
                     <div
@@ -162,11 +162,16 @@ import "trix";
 import { reactive } from "vue";
 
 const props = defineProps({
+    post: Object,
     categories: Array,
 });
 
 function handleTrixChange(event) {
     form.body = event.target.innerHTML;
+}
+
+function handleFileUpload(event) {
+    form.document = event.target.files[0];
 }
 
 const previewUrl = ref(null);
