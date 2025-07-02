@@ -13,13 +13,22 @@ const props = defineProps({
 
 const previewUrl = ref(null);
 
+// const form = useForm({
+//     title: props.post.title,
+//     slug: props.post.slug,
+//     category_id: props.post.category_id,
+//     body: props.post.body,
+//     image: null, // File baru
+//     oldImage: props.post.image, // Gambar lama
+// });
+
 const form = useForm({
-    title: props.post.title,
-    slug: props.post.slug,
-    category_id: props.post.category_id,
-    body: props.post.body,
-    image: null, // File baru
-    oldImage: props.post.image, // Gambar lama
+    title: props.post?.title || "",
+    slug: props.post?.slug || "",
+    category_id: props.post?.category_id || "",
+    body: props.post?.body || "",
+    image: null,
+    oldImage: props.post?.image || "",
 });
 
 function submitForm() {
