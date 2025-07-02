@@ -29,25 +29,6 @@
                 <input type="hidden" v-model="form.slug" />
 
                 <div>
-                    <label for="category_id" class="block font-medium"
-                        >Kategori</label
-                    >
-                    <select
-                        v-model="form.category_id"
-                        id="category_id"
-                        class="w-full border rounded p-2"
-                    >
-                        <option
-                            v-for="category in categories"
-                            :key="category.id"
-                            :value="category.id"
-                        >
-                            {{ category.name }}
-                        </option>
-                    </select>
-                </div>
-
-                <div>
                     <label for="image" class="block font-medium">Gambar</label>
                     <input type="file" @change="previewImage" />
                     <img
@@ -68,20 +49,59 @@
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-1">Isi Postingan</label>
+                    <label for="category" class="block font-medium"
+                        >Lingkup</label
+                    >
+                    <select
+                        v-model="form.lingkup_id"
+                        id="lingkup_id"
+                        class="w-full border rounded p-2"
+                    >
+                        <option
+                            v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id"
+                        >
+                            {{ category.name }}
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="title" class="block font-medium"
+                        >Nama Pelaksana</label
+                    >
+                    <input
+                        v-model="form.name"
+                        type="text"
+                        id="name"
+                        class="w-full border rounded p-2"
+                        :class="{ 'border-red-500': form.errors.name }"
+                        @change="generateSlug"
+                    />
+                    <p v-if="form.errors.name" class="text-red-500 text-sm">
+                        {{ form.errors.name }}
+                    </p>
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1">Description</label>
                     <input
                         id="body"
                         type="hidden"
-                        v-model="form.body"
+                        v-model="form.description"
                         name="body"
                     />
                     <trix-editor
-                        input="body"
+                        input="description"
                         @trix-change="updateBody"
                         ref="trixEditorRef"
                     ></trix-editor>
-                    <p v-if="form.errors.body" class="text-red-500 text-sm">
-                        {{ form.errors.body }}
+                    <p
+                        v-if="form.errors.description"
+                        class="text-red-500 text-sm"
+                    >
+                        {{ form.errors.description }}
                     </p>
                 </div>
 
@@ -114,26 +134,18 @@ const props = defineProps({
 
 const previewUrl = ref(null);
 
-// const form = useForm({
-//     title: props.post.title,
-//     slug: props.post.slug,
-//     category_id: props.post.category_id,
-//     body: props.post.body,
-//     image: null,
-//     oldImage: props.post.image,
-// });
-
 const form = useForm({
     title: props.post?.title || "",
     slug: props.post?.slug || "",
-    category_id: props.post?.category_id || "",
-    body: props.post?.body || "",
+    name: props.post?.name || "",
+    lingkup_id: props.post?.lingkup_id || "",
+    description: props.post?.description || "",
     image: null,
     oldImage: props.post?.image || "",
 });
 
 function generateSlug() {
-    fetch(`/dashboard/posts/checkSlug?title=${form.title}`)
+    fetch(`/dashboard/pelaksanaanProgram/checkSlug?title=${form.title}`)
         .then((res) => res.json())
         .then((data) => {
             form.slug = data.slug;
@@ -155,20 +167,54 @@ function previewImage(e) {
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
-    category_id: form.category_id,
-    body: form.body,
+    name: form.name,
+    lingkup_id: form.lingkup_id,
+    description: form.description,
     image: form.image,
     oldImage: form.oldImage,
 });
 
 function submitForm() {
-    form.put(`/dashboard/posts/${props.post.slug}`, {
+    console.log("KIRIM:", {
+        title: form.title,
+        slug: form.slug,
+        name: form.name,
+        lingkup_id: form.lingkup_id,
+        description: form.description,
+        image: form.image,
+        oldImage: form.oldImage,
+    });
+
+    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            name: form.name,
+            lingkup_id: form.lingkup_id,
+            description: form.description,
+            image: form.image,
+            oldImage: form.oldImage,
+        },
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("Post updated");
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }
+
+// function submitForm() {
+//     form.put(`/dashboard/pelaksanaanProgram/${props.post.slug}`, {
+//         preserveScroll: true,
+//         onSuccess: () => {
+//             console.log("Post updated");
+//         },
+//     });
+// }
 
 // form.submit("post", `/dashboard/posts/${props.post.slug}`, {
 //     data: {
@@ -215,14 +261,14 @@ onMounted(() => {
 
     // Ini memastikan nilai input hidden sudah ada
     const hiddenInput = document.querySelector("#body");
-    if (hiddenInput && form.body) {
-        hiddenInput.value = form.body;
+    if (hiddenInput && form.description) {
+        hiddenInput.value = form.description;
 
         // Tunggu nextTick agar Trix sudah siap
         setTimeout(() => {
             const editor = trixEditorRef.value?.editor;
             if (editor) {
-                editor.loadHTML(form.body); // 🌟 Ini menampilkan konten lama ke editor
+                editor.loadHTML(form.description); // 🌟 Ini menampilkan konten lama ke editor
             }
         }, 100);
     }

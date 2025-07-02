@@ -105,7 +105,7 @@
                 <!-- description (Trix Editor) -->
                 <div class="mb-4">
                     <label for="body" class="block font-semibold mb-1"
-                        >Isi Postingan</label
+                        >Description</label
                     >
                     <input
                         id="body"
