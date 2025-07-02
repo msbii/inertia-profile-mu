@@ -125,6 +125,9 @@ class DashboardSejarahController extends Controller
                 Storage::delete($request->oldImage);
             }
             $validateData['image'] = $request->file('image')->store('post-images','public');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
         // Menyimpan data ke dalamm post
