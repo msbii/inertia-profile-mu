@@ -118,7 +118,6 @@ class DashboardSejarahController extends Controller
         // validasi data
         $validateData = $request->validate($rules);
 
-        dd($validateData);
         // check jika img tidak ada maka unsplash
         if ($request->file('image')) {
             // Menghapus data foto lama supaya berganti baru
@@ -127,8 +126,6 @@ class DashboardSejarahController extends Controller
             }
             $validateData['image'] = $request->file('image')->store('post-images','public');
         }
-
-        dd('test');
 
         // Menyimpan data ke dalamm post
         $validateData['user_id'] = auth()->id();
