@@ -50,7 +50,7 @@ class DashboardController extends Controller
 
     public function downloadImage($filename)
     {
-        $path = 'post-image/' . $filename;
+        $path = 'post-images/' . $filename;
 
         if (!Storage::disk('public')->exists($path)) {
             abort(404, 'File tidak ditemukan');
