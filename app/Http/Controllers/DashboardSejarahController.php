@@ -109,14 +109,12 @@ class DashboardSejarahController extends Controller
     public function update(Request $request, Sejarah $sejarah)
     {
         //
-        dd($sejarah);
         $rules =[
             'title' => 'required|string|max:255',
             'image' => 'image|file|max:2048',
             'body' => 'required',
         ];
-        
-
+        dd("test");
         // validasi data
         $validateData = $request->validate($rules);
 
