@@ -178,8 +178,8 @@ const form = useForm({
     oldImage: props.post?.image || "",
     time: props.post?.time || "",
     location: props.post?.location || "",
-    agenda: props.post?.agenda || "",
-    hasil: props.post?.hasil || "",
+    agenda: props.post?.hasil || "",
+    hasil: props.post?.agenda || "",
 });
 
 function generateSlug() {
