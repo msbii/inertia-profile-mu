@@ -111,7 +111,7 @@ class DashboardSejarahController extends Controller
         //
         $rules =[
             'title' => 'required|string|max:255',
-            'image' => 'image|file|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'body' => 'required',
         ];
         
