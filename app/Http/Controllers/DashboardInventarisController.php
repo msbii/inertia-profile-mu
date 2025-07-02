@@ -108,8 +108,8 @@ class DashboardInventarisController extends Controller
     public function edit(Inventaris $inventaris)
     {
         //
-        dd($inventaris);
-        $inventaris = inventaris::where('slug', $inventaris)->firstOrFail();
+        $data = inventaris::where('slug', $inventaris)->firstOrFail();
+        dd($data);
         return Inertia::render('dashboard/inventaris/edit',[
             'post' => $inventaris,
             'categories' => Lingkup::take(2)->get(),

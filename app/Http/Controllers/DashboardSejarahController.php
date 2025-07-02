@@ -98,7 +98,6 @@ class DashboardSejarahController extends Controller
     public function edit(Sejarah $sejarah)
     {
         //
-        dd($sejarah);
         return Inertia::render('dashboard/sejarah/edit', [
             'post' => $sejarah,
         ]);
