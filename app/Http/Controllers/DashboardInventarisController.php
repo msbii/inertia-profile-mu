@@ -119,10 +119,10 @@ class DashboardInventarisController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Inventaris $inventaris)
+    public function update(Request $request, $slug)
     {
         // Ambil data SK berdasarkan slug
-        $inventaris = inventaris::where('slug', $inventaris)->firstOrFail();
+        $inventaris = inventaris::where('slug', $slug)->firstOrFail();
 
         // Aturan validasi
         $rules =[
