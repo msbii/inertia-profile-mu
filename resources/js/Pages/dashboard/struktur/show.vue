@@ -5,7 +5,7 @@
         </div>
 
         <div class="max-w-3xl mx-auto mb-5">
-            <h2>{{ post.title }}</h2>
+            <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
 
             <Link href="/dashboard/struktur" class="btn btn-success">
                 <i class="bi bi-arrow-left"></i> Kembali ke Semua SK Saya

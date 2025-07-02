@@ -5,7 +5,7 @@
         </div>
 
         <div class="max-w-3xl mx-auto mb-5">
-            <h2>{{ post.title }}</h2>
+            <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
             <h5>{{ post.position.name }}</h5>
 
             <Link href="/dashboard/biodataPimpinan" class="btn btn-success">
