@@ -117,6 +117,7 @@ class DashboardStrukturController extends Controller
         // Ambil data SK berdasarkan slug
         $sK = StrukturOrganisasi::where('slug', $strukturOrganisasi)->firstOrFail();
 
+        dd($sK);
         // Aturan validasi
         $rules =[
             'title' => 'required|max:255',
@@ -153,6 +154,7 @@ class DashboardStrukturController extends Controller
         // Update data
         StrukturOrganisasi::where('id', $sK->id)->update($validateData);
 
+        // return Inertia::location(route('dashboard.posts.index'))->with('success', 'Data Struktur telah Diperbarui!');
         return redirect('/dashboard/struktur')->with('success', 'Data Struktur telah Diperbarui!');
     }
 
