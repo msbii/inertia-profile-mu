@@ -171,7 +171,8 @@ Route::get('/kajian/musholaAlHikmah/{slug}',[AmalMasjidAlHikmahController::class
 Route::get('/dashboard/home',[DashboardController::class, 'index'])
 ->middleware('auth');
 Route::get('/download/{filename}', [DashboardController::class, 'download'])->name('download');
-Route::get('/download-image/{filename}', [DashboardController::class, 'downloadImage'])->name('downloadImage');
+Route::get('/download-image/{filename}', [DashboardController::class, 'downloadImage'])->name('downloadImage')
+->where('filename', '.*'); // agar mendukung file dengan spasi dll;
 
 
 // Route::middleware(['auth'])->group(function () {
