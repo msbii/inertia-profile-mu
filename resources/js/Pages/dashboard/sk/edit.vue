@@ -28,42 +28,64 @@
 
                 <input type="hidden" v-model="form.slug" />
 
-                <div>
-                    <label for="image" class="block font-medium">Gambar</label>
-                    <input type="file" @change="previewImage" />
-                    <img
-                        v-if="previewUrl"
-                        :src="previewUrl"
-                        class="w-32 mt-2 rounded"
-                    />
-                    <img
-                        v-else-if="form.oldImage"
-                        :src="`/storage/${form.oldImage}`"
-                        class="w-32 mt-2 rounded"
-                    />
-                    <input
-                        type="hidden"
-                        name="oldImage"
-                        :value="form.oldImage"
-                    />
+                <!-- Kategori -->
+                <div class="mb-4">
+                    <label for="category" class="block font-semibold mb-1"
+                        >Kategori</label
+                    >
+                    <select
+                        v-model="form.kategori_sk_id"
+                        class="w-full border rounded px-3 py-2"
+                    >
+                        <option
+                            v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id"
+                        >
+                            {{ category.name }}
+                        </option>
+                    </select>
                 </div>
 
-                <div>
-                    <label class="block font-medium mb-1">Isi Postingan</label>
+                <div class="mb-4">
+                    <label for="tahun" class="block font-semibold mb-1"
+                        >Tahun</label
+                    >
                     <input
-                        id="body"
-                        type="hidden"
-                        v-model="form.body"
-                        name="body"
+                        v-model="form.tahun"
+                        type="text"
+                        id="tahun"
+                        @change="generateSlug"
+                        class="w-full border rounded px-3 py-2"
+                        :class="{ 'border-red-500': form.errors.tahun }"
+                        required
+                        autofocus
                     />
-                    <trix-editor
-                        input="body"
-                        @trix-change="updateBody"
-                        ref="trixEditorRef"
-                    ></trix-editor>
-                    <p v-if="form.errors.body" class="text-red-500 text-sm">
-                        {{ form.errors.body }}
-                    </p>
+                    <div
+                        v-if="form.errors.tahun"
+                        class="text-red-500 text-sm mt-1"
+                    >
+                        {{ form.errors.tahun }}
+                    </div>
+                </div>
+
+                <!-- Dokumen SK -->
+                <div class="mb-4">
+                    <label for="document" class="block font-semibold mb-1"
+                        >Dokumen SK</label
+                    >
+
+                    <input
+                        type="file"
+                        id="document"
+                        @change="handleFileUpload"
+                        class="w-full border rounded px-3 py-2"
+                    />
+
+                    <div
+                        v-if="form.errors.document"
+                        class="text-red-500 text-sm mt-1"
+                    ></div>
                 </div>
 
                 <!-- <button
@@ -92,118 +114,64 @@ const props = defineProps({
     post: Object,
 });
 
-const previewUrl = ref(null);
-
-// const form = useForm({
-//     title: props.post.title,
-//     slug: props.post.slug,
-//     category_id: props.post.category_id,
-//     body: props.post.body,
-//     image: null,
-//     oldImage: props.post.image,
-// });
+function handleFileUpload(event) {
+    form.document = event.target.files[0];
+}
 
 const form = useForm({
     title: props.post?.title || "",
     slug: props.post?.slug || "",
-    body: props.post?.body || "",
-    image: null,
-    oldImage: props.post?.image || "",
+    kategori_sk_id: props.post?.kategori_sk_id || "",
+    tahun: props.post?.tahun || "",
+    document: null,
+    olddocument: props.post?.document || "",
 });
 
 function generateSlug() {
-    fetch(`/dashboard/sejarah/checkSlug?title=${form.title}`)
+    fetch(`/dashboard/sk/checkSlug?title=${form.title}`)
         .then((res) => res.json())
         .then((data) => {
             form.slug = data.slug;
         });
 }
 
-function previewImage(e) {
-    const file = e.target.files[0];
-    form.image = file;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        previewUrl.value = e.target.result;
-    };
-    reader.readAsDataURL(file);
-    console.log("File dipilih:", file);
-}
-
 console.log("KIRIM DATA:", {
     title: form.title,
     slug: form.slug,
-    category_id: form.category_id,
-    body: form.body,
-    image: form.image,
-    oldImage: form.oldImage,
+    kategori_sk_id: form.kategori_sk_id,
+    tahun: form.tahun,
+    document: form.document,
+    olddocument: form.olddocument,
 });
 
 function submitForm() {
-    form.put(`/dashboard/sejarah/${props.post.slug}`, {
+    console.log("KIRIM:", {
+        title: form.title,
+        slug: form.slug,
+        kategori_sk_id: form.kategori_sk_id,
+        tahun: form.tahun,
+        document: form.document,
+        olddocument: form.olddocument,
+    });
+
+    form.submit("post", `/dashboard/sk/${props.post.slug}`, {
+        data: {
+            _method: "put",
+            title: form.title,
+            slug: form.slug,
+            kategori_sk_id: form.kategori_sk_id,
+            tahun: form.tahun,
+            document: form.document,
+            olddocument: form.olddocument,
+        },
+        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            console.log("Post updated");
+            console.log("✅ Post updated!");
+        },
+        onError: (errors) => {
+            console.error("❌ Gagal update:", errors);
         },
     });
 }
-
-// form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
-//     data: {
-//         _method: "put",
-//         title: form.title,
-//         slug: form.slug,
-//         category_id: form.category_id,
-//         body: form.body,
-//         image: form.image,
-//         oldImage: form.oldImage,
-//     },
-//     forceFormData: true,
-//     preserveScroll: true,
-//     onSuccess: () => {
-//         console.log("Post updated");
-//     },
-// });
-
-// function submitForm() {
-//     form.put(`/dashboard/sejarah/${props.post.slug}`, {
-//         // method: "putt",
-//         // _method: "put", // spoof method agar dianggap PUT
-//         forceFormData: true, // wajib agar file ikut terkirim
-//         preserveScroll: true,
-//         onSuccess: () => {
-//             console.log("Post updated");
-//         },
-//     });
-// }
-
-// Refs
-const trixEditorRef = ref(null);
-
-function updateBody(e) {
-    form.body = e.target.innerHTML;
-}
-
-// Set isi trix-editor secara manual
-onMounted(() => {
-    document.addEventListener("trix-file-accept", (e) => e.preventDefault());
-
-    // Ini akan memastikan input hidden sudah terisi duluan
-    // document.querySelector("#body").value = form.body;
-
-    // Ini memastikan nilai input hidden sudah ada
-    const hiddenInput = document.querySelector("#body");
-    if (hiddenInput && form.body) {
-        hiddenInput.value = form.body;
-
-        // Tunggu nextTick agar Trix sudah siap
-        setTimeout(() => {
-            const editor = trixEditorRef.value?.editor;
-            if (editor) {
-                editor.loadHTML(form.body); // 🌟 Ini menampilkan konten lama ke editor
-            }
-        }, 100);
-    }
-});
 </script>

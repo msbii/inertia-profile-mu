@@ -120,7 +120,7 @@ class DashboardSKController extends Controller
             'title' => 'required|max:255',
             'kategori_sk_id' => 'required',
             'tahun' => 'required',
-            'document' => 'file|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
+            'document' => 'nullable|file|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         ];
 
         if ($request->slug != $sK->slug) {
@@ -143,6 +143,9 @@ class DashboardSKController extends Controller
             $originalName = time() . '_' . $document->getClientOriginalName();
             $path = $document->storeAs('post-document', $originalName, 'public');
             $validateData['document'] = $originalName;
+        }else {
+            // Gunakan gambar lama
+            $validateData['document'] = $request->olddocument;
         }
 
         // Update data

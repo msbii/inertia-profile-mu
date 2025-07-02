@@ -220,7 +220,7 @@
                                         </Link> -->
                                         <!-- Tombol Ubah -->
                                         <Link
-                                            :href="`/dashboard/user/${post.slug}/edit`"
+                                            :href="`/dashboard/user/${user.slug}/edit`"
                                         >
                                             <button
                                                 class="btn btn-warning mx-1 btn-edit"
