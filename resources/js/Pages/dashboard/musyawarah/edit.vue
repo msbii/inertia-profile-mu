@@ -290,7 +290,8 @@ function submitForm() {
 // }
 
 // Refs
-const trixEditorRef = ref(null);
+const trixEditorRefagenda = ref(null);
+const trixEditorRefhasil = ref(null);
 
 function updateagenda(e) {
     form.agenda = e.target.innerHTML;

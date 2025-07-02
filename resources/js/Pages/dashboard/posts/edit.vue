@@ -31,6 +31,25 @@ const form = useForm({
     oldImage: props.post?.image || "",
 });
 
+function generateSlug() {
+    fetch(`/dashboard/posts/checkSlug?title=${form.title}`)
+        .then((res) => res.json())
+        .then((data) => {
+            form.slug = data.slug;
+        });
+}
+
+function previewImage(e) {
+    const file = e.target.files[0];
+    form.image = file;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        previewUrl.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
 function submitForm() {
     console.log("KIRIM:", {
         title: form.title,
@@ -60,17 +79,6 @@ function submitForm() {
             console.error("❌ Gagal update:", errors);
         },
     });
-}
-
-function previewImage(e) {
-    const file = e.target.files[0];
-    form.image = file;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        previewUrl.value = e.target.result;
-    };
-    reader.readAsDataURL(file);
 }
 
 const trixEditorRef = ref(null);
