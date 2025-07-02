@@ -292,11 +292,11 @@ function submitForm() {
 // Refs
 const trixEditorRef = ref(null);
 
-function updatehasil(e) {
-    form.hasil = e.target.innerHTML;
-}
 function updateagenda(e) {
     form.agenda = e.target.innerHTML;
+}
+function updatehasil(e) {
+    form.hasil = e.target.innerHTML;
 }
 
 // Set isi trix-editor secara manual
