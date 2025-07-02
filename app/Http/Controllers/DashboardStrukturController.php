@@ -117,7 +117,6 @@ class DashboardStrukturController extends Controller
         // Ambil data SK berdasarkan slug
         $sK = StrukturOrganisasi::where('slug', $strukturOrganisasi)->firstOrFail();
 
-        dd($sK);
         // Aturan validasi
         $rules =[
             'title' => 'required|max:255',
