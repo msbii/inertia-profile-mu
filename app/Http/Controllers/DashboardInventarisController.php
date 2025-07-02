@@ -109,6 +109,7 @@ class DashboardInventarisController extends Controller
     {
         //
         $inventaris = inventaris::where('slug', $inventaris)->firstOrFail();
+        dd($inventaris);
         return Inertia::render('dashboard/inventaris/edit',[
             'post' => $inventaris,
             'categories' => Lingkup::take(2)->get(),
@@ -128,7 +129,7 @@ class DashboardInventarisController extends Controller
         $rules =[
             'title' => 'required|max:255',
             'location_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'description' => 'required',
             'quantity' => 'required',
             'location' => 'required',
@@ -155,6 +156,9 @@ class DashboardInventarisController extends Controller
             // $validateData['image'] = $originalName;
             $validateData['image'] = 'post-images/' . $originalName;
             // $validateData['image'] = $request->file('image')->store('post-images');
+        }else {
+            // Gunakan gambar lama
+            $validateData['image'] = $request->oldImage;
         }
 
         // Update data

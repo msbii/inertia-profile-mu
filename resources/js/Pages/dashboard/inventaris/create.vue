@@ -103,7 +103,7 @@
                 <!-- Lokasi -->
                 <div class="mb-4">
                     <label for="title" class="block font-semibold mb-1"
-                        >Lokasi</label
+                        >Detail Lokasi</label
                     >
                     <input
                         v-model="form.location"
@@ -126,7 +126,7 @@
                 <!-- description (Trix Editor) -->
                 <div class="mb-4">
                     <label for="body" class="block font-semibold mb-1"
-                        >Isi Postingan</label
+                        >Deskripsi</label
                     >
                     <input
                         id="body"

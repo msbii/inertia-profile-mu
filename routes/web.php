@@ -227,6 +227,8 @@ Route::resource('/dashboard/biodataPimpinan', DashboardBiodataPimpinanController
 
 Route::get('/dashboard/inventaris/checkSlug', [DashboardInventarisController::class,'checkSlug']);
 Route::resource('/dashboard/inventaris', DashboardInventarisController::class);
+// Untuk spoof method PUT dari form.submit("post")
+Route::post('/dashboard/inventaris/{inventaris}', [DashboardInventarisController::class, 'update']);
 
 Route::get('/dashboard/pelaksanaanProgram/checkSlug', [DashboardPelaksanaanProgramController::class,'checkSlug']);
 Route::resource('/dashboard/pelaksanaanProgram', DashboardPelaksanaanProgramController::class);
