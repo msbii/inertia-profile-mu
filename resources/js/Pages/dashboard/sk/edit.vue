@@ -78,10 +78,17 @@
                     <input
                         type="file"
                         id="document"
-                        @change="handleFileUpload"
+                        @change="previewDocument"
                         class="w-full border rounded px-3 py-2"
                     />
                     <!-- Preview Dokumen -->
+                    <iframe
+                        v-if="previewUrl"
+                        :src="previewUrl"
+                        width="50%"
+                        height="300px"
+                        style="border: none"
+                    ></iframe>
                     <iframe
                         :src="`/storage/post-document/${form.olddocument}`"
                         width="50%"
@@ -128,8 +135,22 @@ const props = defineProps({
     categories: Object,
 });
 
-function handleFileUpload(event) {
-    form.document = event.target.files[0];
+const previewUrl = ref(null);
+
+// function handleFileUpload(event) {
+//     form.document = event.target.files[0];
+// }
+
+function previewDocument(e) {
+    const file = e.target.files[0];
+    form.image = file;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        previewUrl.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    console.log("File dipilih:", file);
 }
 
 const form = useForm({
