@@ -106,7 +106,7 @@
                 <div>
                     <label class="block font-medium mb-1">Agenda</label>
                     <input
-                        id="body"
+                        id="agenda"
                         type="hidden"
                         v-model="form.agenda"
                         name="agenda"
@@ -126,7 +126,7 @@
                         >Hasil Musyawarah</label
                     >
                     <input
-                        id="body"
+                        id="hasil"
                         type="hidden"
                         v-model="form.hasil"
                         name="hasil"
@@ -227,7 +227,7 @@ function submitForm() {
         hasil: form.hasil,
     });
 
-    form.submit("post", `/dashboard/sejarah/${props.post.slug}`, {
+    form.submit("post", `/dashboard/musyawarah/${props.post.slug}`, {
         data: {
             _method: "put",
             title: form.title,
@@ -292,8 +292,11 @@ function submitForm() {
 // Refs
 const trixEditorRef = ref(null);
 
-function updateBody(e) {
-    form.body = e.target.innerHTML;
+function updatehasil(e) {
+    form.hasil = e.target.innerHTML;
+}
+function updateagenda(e) {
+    form.agenda = e.target.innerHTML;
 }
 
 // Set isi trix-editor secara manual
@@ -304,15 +307,36 @@ onMounted(() => {
     // document.querySelector("#body").value = form.body;
 
     // Ini memastikan nilai input hidden sudah ada
-    const hiddenInput = document.querySelector("#body");
-    if (hiddenInput && form.body) {
-        hiddenInput.value = form.body;
+    const hiddenInput = document.querySelector("#agenda");
+    if (hiddenInput && form.agenda) {
+        hiddenInput.value = form.agenda;
 
         // Tunggu nextTick agar Trix sudah siap
         setTimeout(() => {
             const editor = trixEditorRef.value?.editor;
             if (editor) {
-                editor.loadHTML(form.body); // 🌟 Ini menampilkan konten lama ke editor
+                editor.loadHTML(form.agenda); // 🌟 Ini menampilkan konten lama ke editor
+            }
+        }, 100);
+    }
+});
+
+onMounted(() => {
+    document.addEventListener("trix-file-accept", (e) => e.preventDefault());
+
+    // Ini akan memastikan input hidden sudah terisi duluan
+    // document.querySelector("#body").value = form.body;
+
+    // Ini memastikan nilai input hidden sudah ada
+    const hiddenInput = document.querySelector("#hasil");
+    if (hiddenInput && form.hasil) {
+        hiddenInput.value = form.hasil;
+
+        // Tunggu nextTick agar Trix sudah siap
+        setTimeout(() => {
+            const editor = trixEditorRef.value?.editor;
+            if (editor) {
+                editor.loadHTML(form.hasil); // 🌟 Ini menampilkan konten lama ke editor
             }
         }, 100);
     }
