@@ -83,7 +83,10 @@ console.log("Sejarah:", props.post);
                             <div class="styled-heading">
                                 <h2>{{ post.title }}</h2>
                             </div>
-                            <div class="text-justify" v-html="post.body"></div>
+                            <div
+                                class="text-justify text-lg leading-relaxed"
+                                v-html="post.body"
+                            ></div>
                             <!-- {{-- <a href="/" class"d-block mt-3"> <span class="fa fa-angle-left"></span> &ensp; Kembali ke Postingan</a> --}} -->
                         </div>
                     </div>
