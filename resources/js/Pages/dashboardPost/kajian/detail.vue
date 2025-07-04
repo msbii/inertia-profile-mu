@@ -52,7 +52,10 @@ console.log("detail kajian:", props.post);
                             class="news-section classic-view blog-details no-padd-top padd-bott-70"
                         >
                             <article class="column featured-news-column">
-                                <div class="inner-box clearfix">
+                                <div
+                                    class="inner-box clearfix"
+                                    style="font-size: 15px; line-height: 1.7"
+                                >
                                     <figure class="image-box">
                                         <div
                                             class="d-flex justify-content-center"

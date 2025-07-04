@@ -65,7 +65,10 @@ console.log("musyawarah:", props.musyawarah);
                         class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right"
                     >
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <h3>Detail Muhammadiyah</h3>
                                 <br />
                                 <h3>Musyawarah: {{ musyawarah.title }}</h3>

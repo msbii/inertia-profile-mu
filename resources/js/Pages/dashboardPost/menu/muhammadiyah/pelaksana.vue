@@ -63,7 +63,10 @@ console.log("pelaksana:", props.pelaksanaProgram);
                     >
                         <!--Law Section-->
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <h3>Pelaksanaan Program</h3>
                                 <br />
                                 <h3>{{ pelaksanaProgram.title }}</h3>

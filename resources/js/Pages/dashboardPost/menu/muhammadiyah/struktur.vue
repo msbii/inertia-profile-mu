@@ -64,7 +64,10 @@ console.log("biodata:", props.biodata);
                     >
                         <!--Law Section-->
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <div class="tags">
                                     <span class="icon fa fa-tags"></span>&ensp;
                                     <Link
@@ -108,7 +111,10 @@ console.log("biodata:", props.biodata);
                             </div>
                             <!--Basic Details-->
                             <div class="basic-details">
-                                <div class="row clearfix">
+                                <div
+                                    class="row clearfix"
+                                    style="font-size: 15px; line-height: 1.7"
+                                >
                                     <div
                                         class="image-column col-md-5 col-sm-6 col-xs-12"
                                     >
