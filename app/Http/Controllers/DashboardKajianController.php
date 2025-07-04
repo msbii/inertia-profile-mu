@@ -154,7 +154,7 @@ class DashboardKajianController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validateData['image'] = $request->file('image')->store('post-images');
+            $validateData['image'] = $request->file('image')->store('post-images', 'public');
         }else {
             // Gunakan gambar lama
             $validateData['image'] = $request->oldImage;
