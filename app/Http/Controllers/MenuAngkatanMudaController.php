@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Category;
 use App\Models\Musyawarah;
-use App\Models\post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class MenuAngkatanMudaController extends Controller
@@ -78,7 +78,7 @@ class MenuAngkatanMudaController extends Controller
     public function detailSyiar($slug)
     {
         //
-        $syiar = post::where('slug', 'LIKE', '%' . $slug . '%')->firstOrFail();
+        $syiar = Post::where('slug', 'LIKE', '%' . $slug . '%')->firstOrFail();
 
         return Inertia::render('dashboardPost/menu/angkatanMuda/detailSyiar', [
             "title" => "Single post",
@@ -104,7 +104,7 @@ class MenuAngkatanMudaController extends Controller
     public function detailBaksos($slug)
     {
         //
-        $Baksos = post::where('slug', 'LIKE', '%' . $slug . '%')->firstOrFail();
+        $Baksos = Post::where('slug', 'LIKE', '%' . $slug . '%')->firstOrFail();
 
         return Inertia::render('dashboardPost/menu/angkatanMuda/detailBaksos', [
             "title" => "Single post",
