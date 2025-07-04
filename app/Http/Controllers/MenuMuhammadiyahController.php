@@ -337,8 +337,8 @@ class MenuMuhammadiyahController extends Controller
             $query->where('name', 'LIKE', '%muhammadiyah%');//mencari kolom nama yang mengandung kata muhammadiyah
         })->get();
         
-        $inventaris = Inventaris::with('Location')//menghubungkan dengan nama relasi
-        ->whereHas('Location', function ($query) {
+        $inventaris = Inventaris::with('Lingkup')//menghubungkan dengan nama relasi
+        ->whereHas('Lingkup', function ($query) {
             $query->where('name', 'LIKE', '%muhammadiyah%');//mencari kolom nama yang mengandung kata muhammadiyah
         })->get();
         
