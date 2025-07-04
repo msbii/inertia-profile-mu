@@ -115,8 +115,8 @@
                     />
                     <!-- Preview Dokumen -->
                     <iframe
-                        v-if="previewUrl"
-                        :src="previewUrl"
+                        v-if="previewdoc"
+                        :src="previewdoc"
                         width="50%"
                         height="300px"
                         style="border: none"
@@ -169,6 +169,7 @@ const props = defineProps({
 });
 
 const previewUrl = ref(null);
+const previewdoc = ref(null);
 
 const form = useForm({
     title: props.post?.title || "",
@@ -208,7 +209,7 @@ function previewDocument(e) {
 
     const reader = new FileReader();
     reader.onload = (e) => {
-        previewUrl.value = e.target.result;
+        previewdoc.value = e.target.result;
     };
     reader.readAsDataURL(file);
     console.log("File dipilih:", file);
