@@ -137,12 +137,12 @@ onMounted(() => {
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"
-                        class="w-32 mt-2 rounded"
+                        class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <img
                         v-else-if="form.oldImage"
                         :src="`/storage/${form.oldImage}`"
-                        class="w-32 mt-2 rounded"
+                        class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <!-- <input
                         type="hidden"

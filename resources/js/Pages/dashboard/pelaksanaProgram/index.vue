@@ -102,17 +102,6 @@
                                     >
                                         Nama Bidang
                                     </th>
-
-                                    <th
-                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                        :class="[
-                                            color === 'light'
-                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-                                        ]"
-                                    >
-                                        Deskripsi
-                                    </th>
                                     <th
                                         class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                                         :class="[
@@ -193,12 +182,6 @@
                                     >
                                         {{ post.name }}
                                     </td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                        v-html="
-                                            post.description.substring(0, 100)
-                                        "
-                                    ></td>
 
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"

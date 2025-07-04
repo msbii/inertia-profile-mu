@@ -84,7 +84,7 @@
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"
-                        class="mb-2 w-40 h-auto"
+                        class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <input
                         type="file"
