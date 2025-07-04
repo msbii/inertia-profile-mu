@@ -35,7 +35,7 @@
                     <button
                         class="btn btn-danger"
                         type="submit"
-                        @click="confirmDelete"
+                        @click="handleDelete(post.slug)"
                     >
                         <i class="bi bi-file-x bg-danger"></i> Hapus
                     </button>
