@@ -85,7 +85,7 @@ console.log("Sejarah:", props.post);
                             </div>
                             <div
                                 class="text-justify"
-                                style="font-size: 18px; line-height: 1.7"
+                                style="font-size: 14px; line-height: 1.7"
                                 v-html="post.body"
                             ></div>
                             <!-- {{-- <a href="/" class"d-block mt-3"> <span class="fa fa-angle-left"></span> &ensp; Kembali ke Postingan</a> --}} -->
