@@ -67,7 +67,10 @@ console.log("struktur:", props.post);
                     >
                         <!--Law Section-->
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <div class="tags">
                                     <span class="icon fa fa-tags"></span>&ensp;
                                     <Link

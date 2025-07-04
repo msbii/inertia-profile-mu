@@ -69,7 +69,7 @@ console.log("Musyawarah:", props.posts);
 
                                             <img
                                                 v-if="post.image"
-                                                :src="`/storage/ ${post.image}`"
+                                                :src="`/storage/${post.image}`"
                                                 width="370"
                                                 height="250"
                                                 class="card-img-top"

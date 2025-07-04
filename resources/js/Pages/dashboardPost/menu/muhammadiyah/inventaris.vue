@@ -140,7 +140,10 @@ console.log("Inventaris:", props.inventaris);
                                                     >
                                                         <p
                                                             v-html="
-                                                                post.description
+                                                                post.description.substring(
+                                                                    0,
+                                                                    50
+                                                                )
                                                             "
                                                         ></p>
                                                     </Link>

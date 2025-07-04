@@ -62,7 +62,10 @@ console.log("Inventaris:", props.inventaris);
                     >
                         <!--Law Section-->
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <h3>Inventaris Muhammadiyah</h3>
                                 <br />
                                 <h3>Nama Barang: {{ inventaris.title }}</h3>

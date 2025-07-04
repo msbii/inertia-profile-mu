@@ -75,7 +75,7 @@ console.log("Musyawarah:", props.posts);
 
                                             <img
                                                 v-if="post.image"
-                                                :src="`/storage/ ${post.image}`"
+                                                :src="`/storage/${post.image}`"
                                                 width="370"
                                                 height="100"
                                                 class="card-img-top"
@@ -107,7 +107,13 @@ console.log("Musyawarah:", props.posts);
                                             </Link>
                                         </figure>
                                         <div class="right-content">
-                                            <div class="content">
+                                            <div
+                                                class="content"
+                                                style="
+                                                    font-size: 15px;
+                                                    line-height: 1.7;
+                                                "
+                                            >
                                                 <div class="date">
                                                     {{
                                                         new Date(

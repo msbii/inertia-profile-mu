@@ -58,7 +58,10 @@ console.log("baksos:", props.baksos);
                     >
                         <!--Law Section-->
                         <section class="law-section">
-                            <div class="">
+                            <div
+                                class=""
+                                style="font-size: 15px; line-height: 1.7"
+                            >
                                 <h3>Bakti Sosial Idul Adha</h3>
                                 <br />
                                 <h3>{{ baksos.title }}</h3>
