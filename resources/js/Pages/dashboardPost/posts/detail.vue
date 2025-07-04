@@ -54,7 +54,10 @@ console.log("detail Postingan:", props.post);
                         >
                             <!--Column-->
                             <article class="column featured-news-column">
-                                <div class="inner-box clearfix">
+                                <div
+                                    class="inner-box clearfix"
+                                    style="font-size: 15px; line-height: 1.7"
+                                >
                                     <figure class="image-box">
                                         <!-- {{-- pengecekan gambar kosong atau ada --}} -->
 
