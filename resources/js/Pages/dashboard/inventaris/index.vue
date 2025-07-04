@@ -188,7 +188,9 @@
 
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-                                        v-html="post.description"
+                                        v-html="
+                                            post.description.substring(0, 50)
+                                        "
                                     ></td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
