@@ -95,7 +95,7 @@ const props = defineProps({
 const form = useForm({
     name: props.post?.name || "",
     username: props.post?.username || "",
-    role: props.user?.role || "Pengunjung",
+    role: props.user?.role || "",
     is_admin: props.user?.is_admin || 0,
 });
 

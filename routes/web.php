@@ -197,7 +197,7 @@ Route::resource('/dashboard/categories', DashboardCategoriesController::class);
 Route::get('/dashboard/user/checkSlug', [DashboardUserController::class,'checkSlug']);
 Route::resource('/dashboard/user', DashboardUserController::class);
 // Untuk spoof method PUT dari form.submit("post")
-Route::post('/dashboard/user/{user}', [DashboardUserController::class, 'Update']);
+Route::post('/dashboard/user/{id}', [DashboardUserController::class, 'Update']);
 Route::get('/dashboard/exportUsers', [DashboardUserController::class, 'export'])->name('users.export');
 
 Route::post('/request-role', [RoleRequestController::class, 'store'])->name('requestRole')
