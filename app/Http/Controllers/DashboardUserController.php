@@ -76,6 +76,7 @@ class DashboardUserController extends Controller
     public function edit(User $user)
     {
         //
+        dd($user);
         return Inertia::render('dashboard/users/edit', [
             'post' => $user,
         ]);
