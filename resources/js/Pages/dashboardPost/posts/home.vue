@@ -7,6 +7,10 @@ import Layout from "@/shared/mainLayout.vue";
 import debounce from "lodash.debounce";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper-bundle.css";
+import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 
 const { popularPosts } = usePage().props;
 
@@ -47,41 +51,39 @@ console.log("posts:", props.posts);
 
 <template>
     <Layout>
-        <section class="main-slider my-8">
+        <section class="w-full max-w-6xl mx-auto my-10">
             <Swiper
+                :modules="[Navigation, Autoplay, EffectFade]"
                 :slides-per-view="1"
                 :loop="true"
-                :autoplay="{ delay: 4000 }"
-                :pagination="{ clickable: true }"
-                class="w-full max-w-6xl mx-auto"
+                :autoplay="{ delay: 5000, disableOnInteraction: false }"
+                :effect="'fade'"
+                navigation
+                class="rounded-xl overflow-hidden shadow-lg"
             >
-                <SwiperSlide v-for="post in popularPosts" :key="post.id">
-                    <div
-                        class="relative h-[400px] md:h-[600px] w-full overflow-hidden rounded-lg shadow-lg"
-                    >
+                <SwiperSlide v-for="post in posts" :key="post.id">
+                    <div class="relative h-[400px] md:h-[600px] w-full">
                         <img
                             :src="
                                 post.image
                                     ? `/storage/${post.image}`
                                     : '/img/Template1.jpg'
                             "
-                            :alt="post.title"
                             class="object-cover w-full h-full"
+                            :alt="post.title"
                         />
                         <div
-                            class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white p-4"
+                            class="absolute inset-0 bg-black/50 text-white flex flex-col justify-center items-center p-6 text-center"
                         >
-                            <h2
-                                class="text-2xl md:text-4xl font-bold text-center mb-4"
-                            >
+                            <h2 class="text-3xl md:text-5xl font-bold mb-4">
                                 {{ post.title }}
                             </h2>
-                            <p class="text-sm md:text-lg max-w-2xl text-center">
+                            <p class="text-md md:text-lg mb-6 max-w-2xl">
                                 {{ post.excerpt }}
                             </p>
                             <a
                                 :href="`/posts/${post.slug}`"
-                                class="mt-6 inline-block bg-white text-black px-5 py-2 rounded hover:bg-gray-100 transition"
+                                class="bg-white text-black px-6 py-2 rounded shadow hover:bg-gray-200 transition"
                             >
                                 Baca Selengkapnya
                             </a>
