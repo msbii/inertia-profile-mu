@@ -268,7 +268,7 @@
 
                             <div
                                 ref="popoverDropdownRef"
-                                class="bg-white text-lg text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+                                class="bg-white text-lg z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
                                 :class="{
                                     hidden: !dropdownPopoverShow,
                                     block: dropdownPopoverShow,
