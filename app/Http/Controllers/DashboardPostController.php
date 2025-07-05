@@ -23,7 +23,7 @@ class DashboardPostController extends Controller
     //     ]);
     // }
 
-    public function index(Request $request)
+    public function indexx(Request $request)
     {
         $search = $request->search;
 
@@ -44,6 +44,33 @@ class DashboardPostController extends Controller
             ],
         ]);
     }
+
+    public function index(Request $request)
+    {
+        $search = $request->search;
+
+        $user = auth()->user(); // Ambil user yang sedang login
+
+        $posts = Post::with('category')
+            ->when($search, function ($query, $search) {
+                $query->where('title', 'like', '%' . $search . '%');
+            })
+            ->when($user->role === 'Author' && $user->is_admin != 1, function ($query) use ($user) {
+                // Jika Author biasa, tampilkan hanya postingannya sendiri
+                $query->where('user_id', $user->id);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10)
+            ->withQueryString(); // Penting agar search tetap terbawa saat pindah halaman
+
+        return Inertia::render('dashboard/posts/index', [
+            'posts' => $posts,
+            'filters' => [
+                'search' => $search,
+            ],
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
