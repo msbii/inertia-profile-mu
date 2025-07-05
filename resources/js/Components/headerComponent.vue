@@ -255,7 +255,7 @@
                                 </Link>
                             </div>
                         </div>
-                        <div v-else>
+                        <div v-else style="font-size: 15px; line-height: 1.7">
                             <button
                                 ref="btnDropdownRef"
                                 @click="toggleDropdown"
