@@ -2490,11 +2490,12 @@ li {
     margin: 0;
     font-size: 1.25rem;
     font-weight: bold;
+    color: black;
 }
 
 .featured-news-horizontal .right-content .text p {
     margin: 0;
-    color: #555;
+    color: #202020;
 }
 
 .featured-news-horizontal .right-content .btn {
@@ -4434,7 +4435,7 @@ li {
 
 .sidebar .recent-posts .post a,
 .sidebar .recent-posts .post a:hover {
-    color: #b89b5e;
+    color: #2d2d2d;
 }
 
 .sidebar .recent-posts .post h4 a {
@@ -4442,7 +4443,7 @@ li {
 }
 
 .sidebar .recent-posts .post-info {
-    color: #b89b5e;
+    color: #343434;
     font-family: "Lato", sans-serif;
 }
 
