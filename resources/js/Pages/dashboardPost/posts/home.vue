@@ -6,6 +6,8 @@ import { Link } from "@inertiajs/vue3";
 import Layout from "@/shared/mainLayout.vue";
 import debounce from "lodash.debounce";
 
+const { popularPosts } = usePage().props;
+
 const props = defineProps({
     title: String,
     active: String,
@@ -43,6 +45,108 @@ console.log("posts:", props.posts);
 
 <template>
     <Layout>
+        <section class="main-slider revolution-slider">
+            <div class="tp-banner-container">
+                <div class="tp-banner" data-paddingbottom="0">
+                    <ul>
+                        <li
+                            v-for="(post, index) in popularPosts"
+                            :key="post.id"
+                            data-transition="fade"
+                            data-slotamount="1"
+                            data-masterspeed="1000"
+                            :data-thumb="
+                                post.image
+                                    ? `/storage/${post.image}`
+                                    : '/img/Template1.jpg'
+                            "
+                            data-saveperformance="off"
+                            :data-title="post.title"
+                            style="
+                                max-width: 1200px;
+                                max-height: 600px;
+                                margin: auto;
+                            "
+                        >
+                            <img
+                                :src="
+                                    post.image
+                                        ? `/storage/${post.image}`
+                                        : '/img/Template1.jpg'
+                                "
+                                :alt="post.title"
+                                data-bgposition="center top"
+                                data-bgfit="cover"
+                                data-bgrepeat="no-repeat"
+                            />
+
+                            <div
+                                class="tp-caption sfl sfb tp-resizeme"
+                                data-x="right"
+                                data-hoffset="-15"
+                                data-y="center"
+                                data-voffset="-120"
+                                data-speed="1500"
+                                data-start="500"
+                                data-easing="easeOutExpo"
+                                style="
+                                    z-index: 4;
+                                    max-width: 500px;
+                                    white-space: nowrap;
+                                "
+                            >
+                                <h1 class="text-center">{{ post.title }}</h1>
+                            </div>
+
+                            <div
+                                class="tp-caption sfr sfb tp-resizeme"
+                                data-x="right"
+                                data-hoffset="-80"
+                                data-y="center"
+                                data-voffset="20"
+                                data-speed="1500"
+                                data-start="1000"
+                                data-easing="easeOutExpo"
+                                style="
+                                    z-index: 4;
+                                    max-width: 500px;
+                                    white-space: nowrap;
+                                "
+                            >
+                                <div class="text text-center">
+                                    {{ post.excerpt }}
+                                </div>
+                            </div>
+
+                            <div
+                                class="tp-caption sfl sfb tp-resizeme"
+                                data-x="right"
+                                data-hoffset="-200"
+                                data-y="center"
+                                data-voffset="110"
+                                data-speed="1500"
+                                data-start="1500"
+                                data-easing="easeOutExpo"
+                                style="
+                                    z-index: 4;
+                                    max-width: 500px;
+                                    white-space: nowrap;
+                                "
+                            >
+                                <div class="text-center">
+                                    <a
+                                        :href="`/posts/${post.slug}`"
+                                        class="theme-btn btn-style-one"
+                                        >Lihat Postingan</a
+                                    >
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <div v-if="posts.data.length">
             <!--Styled Heading-->
             <div class="styled-heading centered">
