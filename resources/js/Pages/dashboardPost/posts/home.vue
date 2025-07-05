@@ -125,7 +125,7 @@ console.log("posts:", props.posts);
                                             >{{ post.title }}</Link
                                         >
                                     </h3>
-                                    <p class="text">
+                                    <p class="text text-lg leading-relaxed">
                                         <small>
                                             <span v-if="post.speaker">
                                                 By.
@@ -169,7 +169,7 @@ console.log("posts:", props.posts);
                                             </span>
                                         </small>
                                     </p>
-                                    <div class="text">
+                                    <div class="text text-lg leading-relaxed">
                                         <p>
                                             {{
                                                 post.excerpt.substring(0, 100)
