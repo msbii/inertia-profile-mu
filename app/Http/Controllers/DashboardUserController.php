@@ -73,11 +73,11 @@ class DashboardUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($user)
+    public function edit(User $user)
     {
         //
-        $data = User::where('slug', $user)->firstOrFail();
-        dd($data);
+        dd($user);
+        $data = User::where('id', $user)->firstOrFail();
         return Inertia::render('dashboard/users/edit', [
             'post' => $data,
         ]);
