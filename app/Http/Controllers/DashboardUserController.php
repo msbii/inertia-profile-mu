@@ -100,7 +100,7 @@ class DashboardUserController extends Controller
         $user->update($validatedData);
 
             // Redirect ke halaman dengan pesan sukses (Inertia otomatis handle flash)
-            return Redirect::route('dashboard.user.index')->with('success', 'User berhasil diperbarui!');
+            return Redirect::route('dashboard/users/index')->with('success', 'User berhasil diperbarui!');
     }
 
     /**
