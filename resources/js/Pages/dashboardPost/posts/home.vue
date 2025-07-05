@@ -5,6 +5,8 @@ import { defineProps } from "vue";
 import { Link } from "@inertiajs/vue3";
 import Layout from "@/shared/mainLayout.vue";
 import debounce from "lodash.debounce";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/swiper-bundle.css";
 
 const { popularPosts } = usePage().props;
 
@@ -45,106 +47,48 @@ console.log("posts:", props.posts);
 
 <template>
     <Layout>
-        <section class="main-slider revolution-slider">
-            <div class="tp-banner-container">
-                <div class="tp-banner" data-paddingbottom="0">
-                    <ul>
-                        <li
-                            v-for="(post, index) in popularPosts"
-                            :key="post.id"
-                            data-transition="fade"
-                            data-slotamount="1"
-                            data-masterspeed="1000"
-                            :data-thumb="
+        <section class="main-slider my-8">
+            <Swiper
+                :slides-per-view="1"
+                :loop="true"
+                :autoplay="{ delay: 4000 }"
+                :pagination="{ clickable: true }"
+                class="w-full max-w-6xl mx-auto"
+            >
+                <SwiperSlide v-for="post in popularPosts" :key="post.id">
+                    <div
+                        class="relative h-[400px] md:h-[600px] w-full overflow-hidden rounded-lg shadow-lg"
+                    >
+                        <img
+                            :src="
                                 post.image
                                     ? `/storage/${post.image}`
                                     : '/img/Template1.jpg'
                             "
-                            data-saveperformance="off"
-                            :data-title="post.title"
-                            style="
-                                max-width: 1200px;
-                                max-height: 600px;
-                                margin: auto;
-                            "
+                            :alt="post.title"
+                            class="object-cover w-full h-full"
+                        />
+                        <div
+                            class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white p-4"
                         >
-                            <img
-                                :src="
-                                    post.image
-                                        ? `/storage/${post.image}`
-                                        : '/img/Template1.jpg'
-                                "
-                                :alt="post.title"
-                                data-bgposition="center top"
-                                data-bgfit="cover"
-                                data-bgrepeat="no-repeat"
-                            />
-
-                            <div
-                                class="tp-caption sfl sfb tp-resizeme"
-                                data-x="right"
-                                data-hoffset="-15"
-                                data-y="center"
-                                data-voffset="-120"
-                                data-speed="1500"
-                                data-start="500"
-                                data-easing="easeOutExpo"
-                                style="
-                                    z-index: 4;
-                                    max-width: 500px;
-                                    white-space: nowrap;
-                                "
+                            <h2
+                                class="text-2xl md:text-4xl font-bold text-center mb-4"
                             >
-                                <h1 class="text-center">{{ post.title }}</h1>
-                            </div>
-
-                            <div
-                                class="tp-caption sfr sfb tp-resizeme"
-                                data-x="right"
-                                data-hoffset="-80"
-                                data-y="center"
-                                data-voffset="20"
-                                data-speed="1500"
-                                data-start="1000"
-                                data-easing="easeOutExpo"
-                                style="
-                                    z-index: 4;
-                                    max-width: 500px;
-                                    white-space: nowrap;
-                                "
+                                {{ post.title }}
+                            </h2>
+                            <p class="text-sm md:text-lg max-w-2xl text-center">
+                                {{ post.excerpt }}
+                            </p>
+                            <a
+                                :href="`/posts/${post.slug}`"
+                                class="mt-6 inline-block bg-white text-black px-5 py-2 rounded hover:bg-gray-100 transition"
                             >
-                                <div class="text text-center">
-                                    {{ post.excerpt }}
-                                </div>
-                            </div>
-
-                            <div
-                                class="tp-caption sfl sfb tp-resizeme"
-                                data-x="right"
-                                data-hoffset="-200"
-                                data-y="center"
-                                data-voffset="110"
-                                data-speed="1500"
-                                data-start="1500"
-                                data-easing="easeOutExpo"
-                                style="
-                                    z-index: 4;
-                                    max-width: 500px;
-                                    white-space: nowrap;
-                                "
-                            >
-                                <div class="text-center">
-                                    <a
-                                        :href="`/posts/${post.slug}`"
-                                        class="theme-btn btn-style-one"
-                                        >Lihat Postingan</a
-                                    >
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </SwiperSlide>
+            </Swiper>
         </section>
 
         <div v-if="posts.data.length">
