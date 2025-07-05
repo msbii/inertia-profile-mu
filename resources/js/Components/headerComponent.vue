@@ -203,7 +203,7 @@
                     </div>
                     <!-- Kalau sudah login -->
                     <div v-else>
-                        <div v-if="auth.user.role == 'pengunjung'">
+                        <div v-if="auth.user.role == 'Pengunjung'">
                             <!-- <div v-if="user.role === 'pengunjung'"> -->
                             <button
                                 ref="btnDropdownRef"
