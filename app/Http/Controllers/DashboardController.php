@@ -31,9 +31,9 @@ class DashboardController extends Controller
 
         return Inertia::render('dashboard/Dashboard', [
             // 'pp' => $pp,
-            // "totalUsers" => $totalUsers,
-            // "totalPosts" => $totalPosts,
-            // "totalKajians" => $totalKajians,
+            "totalUsers" => $totalUsers,
+            "totalPosts" => $totalPosts,
+            "totalKajians" => $totalKajians,
         ]);
     }
 

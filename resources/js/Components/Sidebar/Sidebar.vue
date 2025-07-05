@@ -394,16 +394,16 @@
                 </ul>
 
                 <!-- Divider -->
-                <hr class="my-4 md:min-w-full" />
+                <!-- <hr class="my-4 md:min-w-full" /> -->
                 <!-- Heading -->
-                <h6
+                <!-- <h6
                     class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
                 >
                     Auth Layout Pages
-                </h6>
+                </h6> -->
                 <!-- Navigation -->
 
-                <ul
+                <!-- <ul
                     class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4"
                 >
                     <li class="items-center">
@@ -429,7 +429,7 @@
                             Register
                         </Link>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </nav>
