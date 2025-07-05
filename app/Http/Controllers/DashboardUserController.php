@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Redirect;
 
 class DashboardUserController extends Controller
 {
@@ -98,8 +99,8 @@ class DashboardUserController extends Controller
         // Update data
         $user->update($validatedData);
 
-        // Redirect ke halaman dengan pesan sukses (Inertia otomatis handle flash)
-        return redirect('/dashboard/users/index')->with('success', 'User berhasil diperbarui!');
+            // Redirect ke halaman dengan pesan sukses (Inertia otomatis handle flash)
+            return Redirect::route('dashboard.user.index')->with('success', 'User berhasil diperbarui!');
     }
 
     /**
