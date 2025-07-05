@@ -87,6 +87,7 @@ class DashboardUserController extends Controller
     public function update(Request $request, $user)
     {
         $user = User::where('id', $user)->firstOrFail();
+        dd($user);
         // Validasi data dari form Inertia
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
