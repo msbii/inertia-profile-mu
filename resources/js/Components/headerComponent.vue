@@ -228,7 +228,7 @@
                                     v-if="
                                         // user.role_requests?.status == 'pending'
 
-                                        auth.user.role_request.status ===
+                                        auth.user.role_request?.status ===
                                         'pending'
                                     "
                                     disabled
