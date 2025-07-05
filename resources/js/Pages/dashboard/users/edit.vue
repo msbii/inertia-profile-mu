@@ -95,8 +95,8 @@ const props = defineProps({
 const form = useForm({
     name: props.post?.name || "",
     username: props.post?.username || "",
-    role: props.user?.role || "",
-    is_admin: props.user?.is_admin || 0,
+    role: props.user.role,
+    is_admin: props.user.is_admin,
 });
 
 console.log("KIRIM DATA:", {
@@ -114,7 +114,7 @@ function submitForm() {
         is_admin: form.is_admin,
     });
 
-    form.submit("post", `/dashboard/user/${props.post.id}`, {
+    form.submit("post", `/dashboard/user/${post.id}`, {
         data: {
             _method: "put",
             name: form.name,
