@@ -84,7 +84,7 @@ class DashboardUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user)
     {
         dd($user);
         // Validasi data dari form Inertia
