@@ -255,7 +255,7 @@
                                 </Link>
                             </div>
                         </div>
-                        <div v-else style="font-size: 15px; line-height: 1.7">
+                        <div v-else>
                             <button
                                 ref="btnDropdownRef"
                                 @click="toggleDropdown"
@@ -269,6 +269,7 @@
                             <div
                                 ref="popoverDropdownRef"
                                 class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+                                style="font-size: 15px; line-height: 1.7"
                                 :class="{
                                     hidden: !dropdownPopoverShow,
                                     block: dropdownPopoverShow,
