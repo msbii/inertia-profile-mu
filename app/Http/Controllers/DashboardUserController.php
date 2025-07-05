@@ -87,7 +87,6 @@ class DashboardUserController extends Controller
     public function update(Request $request, $user)
     {
         $user = User::where('id', $user)->firstOrFail();
-        dd($user);
         // Validasi data dari form Inertia
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -100,7 +99,7 @@ class DashboardUserController extends Controller
         $user->update($validatedData);
 
         // Redirect ke halaman dengan pesan sukses (Inertia otomatis handle flash)
-        return redirect('dashboard/user/index')->with('success', 'User berhasil diperbarui!');
+        return redirect('dashboard/users/index')->with('success', 'User berhasil diperbarui!');
     }
 
     /**
