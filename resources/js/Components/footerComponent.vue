@@ -73,7 +73,10 @@
                     </div>
 
                     <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="single_footer">
+                        <div
+                            class="single_footer"
+                            style="font-size: 15px; line-height: 1.7"
+                        >
                             <h4>Info Kontak</h4>
                             <div
                                 class="sf_contact"
