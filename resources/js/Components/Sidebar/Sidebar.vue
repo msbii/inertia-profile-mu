@@ -15,7 +15,7 @@
             </button>
             <!-- Brand -->
             <Link
-                class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+                class="flex items-center space-x-2 text-blueGray-600 text-sm uppercase font-bold p-4 px-0"
                 href="/"
             >
                 <img
