@@ -75,7 +75,7 @@ defineOptions({
 
         <div class="charts grid grid-cols-2 gap-4">
             <canvas id="lineChart" height="100"></canvas>
-            <canvas id="pieChart" height="100"></canvas>
+            <!-- <canvas id="pieChart" height="100"></canvas> -->
         </div>
     </div>
 
