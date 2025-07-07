@@ -1,7 +1,7 @@
 <template>
     <!-- Navbar -->
     <nav
-        class="fixed top-0 left-0 w-full z-10 bg-dark md:ml-64 flex items-center p-4"
+        class="fixed top-0 left-0 w-full z-10 bg-emerald-600 md:ml-64 flex items-center p-4"
     >
         <div
             class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
