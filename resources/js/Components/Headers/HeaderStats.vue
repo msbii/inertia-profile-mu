@@ -4,7 +4,7 @@
         <div class="px-4 md:px-10 mx-auto w-full">
             <div>
                 <!-- Card stats -->
-                <div class="flex flex-wrap">
+                <!-- <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                         <card-stats
                             statSubtitle="TRAFFIC"
@@ -51,6 +51,47 @@
                             statDescripiron="Since last month"
                             statIconName="fas fa-percent"
                             statIconColor="bg-emerald-500"
+                        />
+                    </div>
+                </div> -->
+
+                <div class="flex flex-wrap">
+                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                        <card-stats
+                            statSubtitle="PENGGUNA"
+                            :statTitle="totalUsers.toString()"
+                            statArrow="up"
+                            statPercent="5.12"
+                            statPercentColor="text-emerald-500"
+                            statDescripiron="Naik dari bulan lalu"
+                            statIconName="fas fa-user"
+                            statIconColor="bg-blue-500"
+                        />
+                    </div>
+
+                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                        <card-stats
+                            statSubtitle="POSTINGAN"
+                            :statTitle="totalPosts.toString()"
+                            statArrow="up"
+                            statPercent="2.85"
+                            statPercentColor="text-indigo-500"
+                            statDescripiron="Naik dari minggu lalu"
+                            statIconName="fas fa-file-alt"
+                            statIconColor="bg-green-500"
+                        />
+                    </div>
+
+                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                        <card-stats
+                            statSubtitle="KAJIAN"
+                            :statTitle="totalKajians.toString()"
+                            statArrow="up"
+                            statPercent="1.23"
+                            statPercentColor="text-pink-500"
+                            statDescripiron="Sejak kemarin"
+                            statIconName="fas fa-book"
+                            statIconColor="bg-pink-500"
                         />
                     </div>
                 </div>
