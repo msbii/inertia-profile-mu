@@ -1,5 +1,7 @@
 <template>
-    <div class="relative z-50">
+    <div
+        class="fixed top-0 left-0 w-full z-10 bg-emerald-600 flex items-center p-4"
+    >
         <a
             class="text-blueGray-500 block"
             href="#"
