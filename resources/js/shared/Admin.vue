@@ -16,7 +16,7 @@
 <script>
 import AdminNavbar from "@/Components/Navbars/AdminNavbar.vue";
 import Sidebar from "@/Components/Sidebar/Sidebar.vue";
-import HeaderStats from "@/Components/Headers/HeaderStats.vue";
+// import HeaderStats from "@/Components/Headers/HeaderStats.vue";
 import FooterAdmin from "@/Components/Footers/FooterAdmin.vue";
 
 export default {
@@ -24,7 +24,7 @@ export default {
     components: {
         Sidebar,
         AdminNavbar,
-        HeaderStats,
+        // HeaderStats,
         FooterAdmin,
     },
 };
