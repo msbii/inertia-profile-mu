@@ -104,6 +104,9 @@ onMounted(() => {
         <div class="flex flex-wrap mt-4">
             <div class="w-full mb-12 px-4">Cuy</div>
         </div>
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4">Cuy</div>
+        </div>
 
         <div class="max-w-3xl mx-auto">
             <h1 class="text-2xl font-semibold mb-6">Ubah Postingan</h1>
