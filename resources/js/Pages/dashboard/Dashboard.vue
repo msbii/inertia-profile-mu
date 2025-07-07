@@ -65,7 +65,9 @@ defineOptions({
         <div class="w-full mb-12 px-4">
             <h1>Dashboard Analytics</h1>
 
-            <div class="key-metrics grid grid-cols-3 gap-4 my-6">
+            <div
+                class="key-metrics grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-6"
+            >
                 <div class="metric text-center bg-white rounded shadow p-4">
                     <h3 class="text-3xl font-bold">{{ totalUsers }}</h3>
                     <p>Total Pengguna</p>
