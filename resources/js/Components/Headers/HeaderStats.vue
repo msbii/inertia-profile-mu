@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import CardStats from "@/Components/Cards/CardStats.vue";
+import CardStats from "@/components/Cards/CardStats.vue";
 
 export default {
     components: {

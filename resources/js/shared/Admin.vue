@@ -3,7 +3,9 @@
         <Sidebar />
         <div class="relative md:ml-64 bg-blueGray-100">
             <admin-navbar />
-            <header-stats />
+            <!-- <header-stats /> -->
+            <!-- Ganti HeaderStats dengan padding kosong -->
+            <div class="pt-20"></div>
             <div class="px-4 md:px-10 mx-auto w-full -m-24">
                 <slot />
                 <footer-admin />
