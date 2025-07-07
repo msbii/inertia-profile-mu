@@ -1,7 +1,7 @@
 <template>
     <!-- Navbar -->
     <nav
-        class="fixed top-0 left-0 w-full z-10 bg-emerald-600 md:flex-row md:flex-nowrap md:justify-start flex items-center p-4"
+        class="fixed top-0 left-0 w-full z-10 bg-emerald-600 md:ml-64 md:flex-row md:flex-nowrap md:justify-start flex items-center p-4"
     >
         <div
             class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
@@ -14,6 +14,12 @@
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
+            <div
+                class="bg-white border p-4 absolute z-[9999] mt-2 right-0"
+                style="width: 200px"
+            >
+                Ini dropdown
+            </div>
             <!-- <a
                 class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
                 href="javascript:void(0)"
