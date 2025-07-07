@@ -101,8 +101,11 @@ onMounted(() => {
 
 <template>
     <Layout title="Edit Postingan">
-        <div class="flex flex-wrap mt-8">
-            <div class="w-full mb-12 px-4">cuy</div>
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4"></div>
+        </div>
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4"></div>
         </div>
 
         <div class="max-w-3xl mx-auto">
