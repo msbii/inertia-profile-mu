@@ -55,27 +55,35 @@ defineOptions({
 </script>
 
 <template>
-    <div class="dashboard">
-        <h1>Dashboard Analytics</h1>
+    <div class="flex flex-wrap mt-4">
+        <div class="w-full mb-12 px-4"></div>
+    </div>
+    <div class="flex flex-wrap mt-4">
+        <div class="w-full mb-12 px-4"></div>
+    </div>
+    <div class="flex flex-wrap mt-4">
+        <div class="w-full mb-12 px-4">
+            <h1>Dashboard Analytics</h1>
 
-        <div class="key-metrics grid grid-cols-3 gap-4 my-6">
-            <div class="metric text-center bg-white rounded shadow p-4">
-                <h3 class="text-3xl font-bold">{{ totalUsers }}</h3>
-                <p>Total Pengguna</p>
+            <div class="key-metrics grid grid-cols-3 gap-4 my-6">
+                <div class="metric text-center bg-white rounded shadow p-4">
+                    <h3 class="text-3xl font-bold">{{ totalUsers }}</h3>
+                    <p>Total Pengguna</p>
+                </div>
+                <div class="metric text-center bg-white rounded shadow p-4">
+                    <h3 class="text-3xl font-bold">{{ totalPosts }}</h3>
+                    <p>Total Postingan</p>
+                </div>
+                <div class="metric text-center bg-white rounded shadow p-4">
+                    <h3 class="text-3xl font-bold">{{ totalKajians }}</h3>
+                    <p>Total Kajian</p>
+                </div>
             </div>
-            <div class="metric text-center bg-white rounded shadow p-4">
-                <h3 class="text-3xl font-bold">{{ totalPosts }}</h3>
-                <p>Total Postingan</p>
-            </div>
-            <div class="metric text-center bg-white rounded shadow p-4">
-                <h3 class="text-3xl font-bold">{{ totalKajians }}</h3>
-                <p>Total Kajian</p>
-            </div>
-        </div>
 
-        <div class="charts grid grid-cols-2 gap-4">
-            <canvas id="lineChart" height="100"></canvas>
-            <!-- <canvas id="pieChart" height="100"></canvas> -->
+            <div class="charts grid grid-cols-2 gap-4">
+                <canvas id="lineChart" height="100"></canvas>
+                <!-- <canvas id="pieChart" height="100"></canvas> -->
+            </div>
         </div>
     </div>
 
