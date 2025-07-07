@@ -55,7 +55,7 @@
                     </div>
                 </div> -->
 
-                <div class="flex flex-wrap">
+                <!-- <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                         <card-stats
                             statSubtitle="PENGGUNA"
@@ -94,7 +94,7 @@
                             statIconColor="bg-pink-500"
                         />
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
