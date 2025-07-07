@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="relative z-50">
         <a
-            class="text-blueGray-500 block z-50"
+            class="text-blueGray-500 block"
             href="#"
             :ref="btnDropdownRef"
             @click="toggleDropdown"
