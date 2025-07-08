@@ -1,8 +1,6 @@
 <template>
     <!-- Navbar -->
-    <nav
-        class="fixed top-0 left-0 w-full z-30 bg-emerald-600 flex items-center p-4"
-    >
+    <nav class="fixed top-0 left-0 w-full bg-emerald-600 flex items-center p-4">
         <div
             class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
         >
