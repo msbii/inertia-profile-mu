@@ -1,34 +1,26 @@
 <template>
-    <div class="relative z-50">
+    <div>
+        <!-- Trigger -->
         <a
-            class="text-blueGray-500 block"
+            class="text-white text-sm uppercase font-semibold cursor-pointer"
             href="#"
             :ref="btnDropdownRef"
             @click="toggleDropdown"
         >
-            <div class="link-box">
-                <span
-                    class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-                >
-                    <i class="fas fa-user"></i>
-                    Halo, <strong>{{ user.name }}</strong>
-                </span>
-            </div>
+            <i class="fas fa-user"></i> Halo, <strong>{{ user.name }}</strong>
         </a>
 
+        <!-- Dropdown -->
         <div
             :ref="popoverDropdownRef"
-            class="absolute right-0 mt-2 bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-            :class="{
-                hidden: !dropdownPopoverShow,
-                block: dropdownPopoverShow,
-            }"
+            class="absolute right-0 mt-2 bg-white text-base z-50 py-2 list-none text-left rounded shadow-lg min-w-48"
+            :class="dropdownPopoverShow ? 'block' : 'hidden'"
         >
             <Link
                 href="/logout"
                 method="post"
                 as="button"
-                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:bg-gray-100"
             >
                 Logout
             </Link>
@@ -37,24 +29,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";
 import { createPopper } from "@popperjs/core";
 
-// Ambil data user dari inertia
 const { props } = usePage();
 const user = props.auth.user;
 
-// State untuk dropdown
 const dropdownPopoverShow = ref(false);
-
-// Refs untuk popper
 const btnDropdownRef = ref(null);
 const popoverDropdownRef = ref(null);
 
-// Toggle dropdown
-const toggleDropdown = (event) => {
-    event.preventDefault();
+const toggleDropdown = (e) => {
+    e.preventDefault();
     dropdownPopoverShow.value = !dropdownPopoverShow.value;
 
     if (dropdownPopoverShow.value) {
