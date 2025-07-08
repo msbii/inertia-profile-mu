@@ -14,12 +14,6 @@
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
-            <div
-                class="bg-white border p-4 absolute z-[9999] mt-2 right-0"
-                style="width: 200px"
-            >
-                Ini dropdown
-            </div>
             <!-- <a
                 class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
                 href="javascript:void(0)"
