@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative z-50">
         <a
             class="text-blueGray-500 block"
             href="#"
