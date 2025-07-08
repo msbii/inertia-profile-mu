@@ -18,7 +18,7 @@
 
         <div
             :ref="popoverDropdownRef"
-            class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+            class="absolute right-0 mt-2 bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
             :class="{
                 hidden: !dropdownPopoverShow,
                 block: dropdownPopoverShow,
