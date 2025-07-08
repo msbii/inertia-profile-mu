@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="fixed top-0 left-0 md:ml-64 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+        class="fixed top-0 left-0 md:ml-64 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between relative"
     >
         <!-- Brand -->
         <div class="text-white font-bold text-lg">
