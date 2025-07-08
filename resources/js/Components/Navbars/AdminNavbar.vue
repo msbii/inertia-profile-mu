@@ -1,60 +1,46 @@
 <template>
-    <!-- Navbar -->
     <nav
-        class="fixed top-0 left-0 w-full z-30 bg-emerald-600 md:ml-64 flex items-center p-4"
+        class="fixed top-0 left-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
-        <div
-            class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
-        >
-            <!-- Brand -->
-            <a
-                class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-                href="/"
-            >
-                <i class="fas fa-home"></i>
-                Beranda
-            </a>
-            <!-- <a
-                class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-                href="javascript:void(0)"
-            >
-                Dashboard Selamat datang, <strong>{{ user?.name }}</strong
-                >!
-            </a> -->
+        <!-- Brand -->
+        <div class="text-white font-bold text-lg">
+            <i class="fas fa-home mr-2"></i> Beranda
+        </div>
 
-            <!-- Form -->
-            <!-- <form
-                class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
+        <!-- User Dropdown -->
+        <div class="relative" ref="dropdownWrapper">
+            <button
+                @click="toggleDropdown"
+                class="text-white font-semibold flex items-center gap-2"
             >
-                <div class="relative flex w-full flex-wrap items-stretch">
-                    <span
-                        class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
-                    >
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input
-                        type="text"
-                        placeholder="Search here..."
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
-                    />
-                </div>
-            </form> -->
-            <!-- User -->
-            <ul
-                class="relative flex-col md:flex-row list-none items-center hidden md:flex"
+                <i class="fas fa-user"></i>
+                Halo, {{ user?.name }}
+            </button>
+            <div
+                v-if="showDropdown"
+                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-50"
             >
-                <user-dropdown />
-            </ul>
+                <Link
+                    href="/logout"
+                    method="post"
+                    as="button"
+                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+                >
+                    Logout
+                </Link>
+            </div>
         </div>
     </nav>
-    <!-- End Navbar -->
 </template>
 
 <script setup>
-import UserDropdown from "@/Components/Dropdowns/UserDropdown.vue";
+import { ref, onClickOutside } from "vue";
+import { usePage, Link } from "@inertiajs/vue3";
 
-import { usePage } from "@inertiajs/vue3";
+const user = usePage().props.auth.user;
+const showDropdown = ref(false);
 
-const page = usePage();
-const user = page.props.auth.user;
+const toggleDropdown = () => {
+    showDropdown.value = !showDropdown.value;
+};
 </script>
