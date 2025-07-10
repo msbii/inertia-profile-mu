@@ -10,8 +10,10 @@
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
+        <div class="w-full md:w-6/12 px-4"></div>
+
         <!-- User Dropdown -->
-        <div class="w-full md:w-9/12 px-4 relative" ref="dropdownWrapper">
+        <div class="w-full md:w-3/12 px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
