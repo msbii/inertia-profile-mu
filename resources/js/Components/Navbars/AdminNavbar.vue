@@ -3,15 +3,15 @@
         class="fixed top-0 left-16 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     > -->
     <nav
-        class="fixed top-0 z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+        class="fixed top-0 left-0 md:ml-64 w-full md:w-[calc(100%-16rem)] z-[9999] bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="w-full md:w-3/12 px-4 text-white font-bold text-lg">
+        <div class="px-4 text-white font-bold text-lg">
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
         <!-- User Dropdown -->
-        <div class="w-full md:w-9/12 px-4 relative" ref="dropdownWrapper">
+        <div class="px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
@@ -21,7 +21,7 @@
             </button>
             <div
                 v-if="showDropdown"
-                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-[999]"
+                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-[99999]"
             >
                 <Link
                     href="/logout"
