@@ -6,14 +6,14 @@
         class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="w-full md:w-3/12 px-4 text-white font-bold text-lg">
+        <div class="md:w-3/12 px-4 text-white font-bold text-lg">
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
-        <div class="w-full md:w-6/12 px-4"></div>
+        <div class="md:w-6/12 px-4"></div>
 
         <!-- User Dropdown -->
-        <div class="w-full md:w-3/12 px-4 relative" ref="dropdownWrapper">
+        <div class="md:w-3/12 px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
