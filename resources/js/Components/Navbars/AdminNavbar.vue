@@ -1,33 +1,38 @@
 <template>
+    <!-- <nav
+        class="fixed top-0 left-16 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+    > -->
     <nav
-        class="fixed top-0 left-16 w-full md:ml-64 md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+        class="fixed top-0 block z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
-        <!-- Brand -->
-        <div class="text-white font-bold text-lg">
-            <i class="fas fa-home mr-2"></i> Beranda
-        </div>
+        <div class="container mx-auto px-4">
+            <!-- Brand -->
+            <div class="text-white font-bold text-lg">
+                <i class="fas fa-home mr-2"></i> Beranda
+            </div>
 
-        <!-- User Dropdown -->
-        <div class="relative" ref="dropdownWrapper">
-            <button
-                @click="toggleDropdown"
-                class="text-white font-semibold flex items-center gap-2"
-            >
-                <i class="fas fa-user"></i>
-                Halo, {{ user?.name }}
-            </button>
-            <div
-                v-if="showDropdown"
-                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-50"
-            >
-                <Link
-                    href="/logout"
-                    method="post"
-                    as="button"
-                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+            <!-- User Dropdown -->
+            <div class="relative" ref="dropdownWrapper">
+                <button
+                    @click="toggleDropdown"
+                    class="text-white font-semibold flex items-center gap-2"
                 >
-                    Logout
-                </Link>
+                    <i class="fas fa-user"></i>
+                    Halo, {{ user?.name }}
+                </button>
+                <div
+                    v-if="showDropdown"
+                    class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-50"
+                >
+                    <Link
+                        href="/logout"
+                        method="post"
+                        as="button"
+                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+                    >
+                        Logout
+                    </Link>
+                </div>
             </div>
         </div>
     </nav>
