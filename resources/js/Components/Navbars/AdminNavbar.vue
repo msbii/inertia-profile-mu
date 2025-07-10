@@ -5,34 +5,32 @@
     <nav
         class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
-        <div class="">
-            <!-- Brand -->
-            <div class="w-full md:w-3/12 px-4 text-white font-bold text-lg">
-                <i class="fas fa-home mr-2"></i> Beranda
-            </div>
+        <!-- Brand -->
+        <div class="w-full md:w-3/12 px-4 text-white font-bold text-lg">
+            <i class="fas fa-home mr-2"></i> Beranda
+        </div>
 
-            <!-- User Dropdown -->
-            <div class="w-full md:w-9/12 px-4 relative" ref="dropdownWrapper">
-                <button
-                    @click="toggleDropdown"
-                    class="text-white font-semibold flex items-center gap-2"
+        <!-- User Dropdown -->
+        <div class="w-full md:w-9/12 px-4 relative" ref="dropdownWrapper">
+            <button
+                @click="toggleDropdown"
+                class="text-white font-semibold flex items-center gap-2"
+            >
+                <i class="fas fa-user"></i>
+                Halo, {{ user?.name }}
+            </button>
+            <div
+                v-if="showDropdown"
+                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-50"
+            >
+                <Link
+                    href="/logout"
+                    method="post"
+                    as="button"
+                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
                 >
-                    <i class="fas fa-user"></i>
-                    Halo, {{ user?.name }}
-                </button>
-                <div
-                    v-if="showDropdown"
-                    class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-50"
-                >
-                    <Link
-                        href="/logout"
-                        method="post"
-                        as="button"
-                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-                    >
-                        Logout
-                    </Link>
-                </div>
+                    Logout
+                </Link>
             </div>
         </div>
     </nav>
