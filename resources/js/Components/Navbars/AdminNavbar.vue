@@ -1,17 +1,14 @@
 <template>
-    <!-- <nav
-        class="fixed top-0 left-16 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
-    > -->
     <nav
         class="fixed top-0 left-0 md:ml-64 w-full md:w-[calc(100%-16rem)] z-[9999] bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="px-4 text-white font-bold text-lg">
+        <div class="text-white font-bold text-lg flex items-center">
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
         <!-- User Dropdown -->
-        <div class="px-4 relative" ref="dropdownWrapper">
+        <div class="relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
@@ -42,8 +39,13 @@ import { usePage, Link } from "@inertiajs/vue3";
 
 const user = usePage().props.auth.user;
 const showDropdown = ref(false);
+const dropdownWrapper = ref(null);
 
 const toggleDropdown = () => {
     showDropdown.value = !showDropdown.value;
 };
+
+onClickOutside(dropdownWrapper, () => {
+    showDropdown.value = false;
+});
 </script>
