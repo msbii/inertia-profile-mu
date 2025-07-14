@@ -170,6 +170,13 @@ Route::get('/kajian/musholaAlHikmah/{slug}',[AmalMasjidAlHikmahController::class
 
 Route::get('/dashboard/home',[DashboardController::class, 'index'])
 ->middleware('auth');
+Route::get('/visitor-stats', function () {
+    return response()->json([
+        'labels' => ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'],
+        'data' => [12, 19, 3, 5, 2],
+    ]);
+});
+
 Route::get('/download/{filename}', [DashboardController::class, 'download'])->name('download');
 Route::get('/download-image/{filename}', [DashboardController::class, 'downloadImage'])->name('downloadImage')
 ->where('filename', '.*'); // agar mendukung file dengan spasi dll;

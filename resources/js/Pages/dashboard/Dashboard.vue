@@ -6,47 +6,80 @@ import CardSocialTraffic from "@/Components/Cards/CardSocialTraffic.vue";
 import AdminLayout from "@/shared/Admin.vue";
 import HeaderStats from "@/Components/Headers/HeaderStats.vue";
 
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import Chart from "chart.js/auto";
+
+const lineCanvas = ref(null);
+let chartInstance = null;
 
 const { props } = usePage();
 const totalUsers = props.totalUsers;
 const totalPosts = props.totalPosts;
 const totalKajians = props.totalKajians;
 
-onMounted(() => {
-    const lineCtx = document.getElementById("lineChart").getContext("2d");
-    new Chart(lineCtx, {
+onMounted(async () => {
+    const res = await fetch("/api/visitor-stats");
+    const data = await res.json();
+
+    chartInstance = new Chart(lineCanvas.value.getContext("2d"), {
         type: "line",
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+            labels: data.labels,
             datasets: [
                 {
-                    label: "Contoh Data",
-                    data: [10, 20, 15, 30, 25, 40],
+                    label: "Visitors",
+                    data: data.data,
                     borderColor: "rgba(75, 192, 192, 1)",
-                    tension: 0.3,
+                    backgroundColor: "rgba(75, 192, 192, 0.2)",
+                    borderWidth: 2,
                 },
             ],
         },
-    });
-
-    const pieCtx = document.getElementById("pieChart").getContext("2d");
-    new Chart(pieCtx, {
-        type: "pie",
-        data: {
-            labels: ["Posts", "Kajian", "Users"],
-            datasets: [
-                {
-                    label: "Data Total",
-                    data: [totalPosts, totalKajians, totalUsers],
-                    backgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"],
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top",
                 },
-            ],
+            },
         },
     });
 });
+
+// onMounted(() => {
+//     const lineCtx = document.getElementById("lineChart").getContext("2d");
+//     new Chart(lineCtx, {
+//         type: "line",
+//         data: {
+//             labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+//             datasets: [
+//                 {
+//                     label: "Contoh Data",
+//                     data: [10, 20, 15, 30, 25, 40],
+//                     borderColor: "rgba(75, 192, 192, 1)",
+//                     tension: 0.3,
+//                 },
+//             ],
+//         },
+//     });
+
+//     const pieCtx = document.getElementById("pieChart").getContext("2d");
+//     new Chart(pieCtx, {
+//         type: "pie",
+//         data: {
+//             labels: ["Posts", "Kajian", "Users"],
+//             datasets: [
+//                 {
+//                     label: "Data Total",
+//                     data: [totalPosts, totalKajians, totalUsers],
+//                     backgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"],
+//                 },
+//             ],
+//         },
+//     });
+// });
 
 // Inertia layout injection
 defineOptions({
