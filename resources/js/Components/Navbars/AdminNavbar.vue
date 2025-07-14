@@ -11,7 +11,7 @@
         </div>
 
         <!-- User Dropdown -->
-        <div class="px-4 relative" ref="dropdownWrapper">
+        <div class="w-full px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
