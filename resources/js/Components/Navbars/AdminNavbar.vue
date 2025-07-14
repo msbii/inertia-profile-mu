@@ -6,12 +6,12 @@
         class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="w-full px-4 text-white font-bold text-lg">
+        <div class="w-full md:w-8/12 px-4 text-white font-bold text-lg">
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
         <!-- User Dropdown -->
-        <div class="w-full px-4 relative" ref="dropdownWrapper">
+        <div class="w-full md:w-4/12 px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
@@ -27,7 +27,7 @@
                     href="/logout"
                     method="post"
                     as="button"
-                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-left"
+                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
                 >
                     Logout
                 </Link>
