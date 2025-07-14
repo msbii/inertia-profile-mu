@@ -65,16 +65,22 @@ defineOptions({
         <div class="w-full mb-12 px-4">
             <h1>Dashboard Analytics</h1>
 
-            <div class="key-metrics grid grid-cols-3 gap-4 my-6">
-                <div class="metric text-center bg-white rounded shadow p-4">
+            <div class="flex flex-nowrap gap-4 my-6">
+                <div
+                    class="metric flex-1 text-center bg-white rounded shadow p-4"
+                >
                     <h3 class="text-3xl font-bold">{{ totalUsers }}</h3>
                     <p>Total Pengguna</p>
                 </div>
-                <div class="metric text-center bg-white rounded shadow p-4">
+                <div
+                    class="metric flex-1 text-center bg-white rounded shadow p-4"
+                >
                     <h3 class="text-3xl font-bold">{{ totalPosts }}</h3>
                     <p>Total Postingan</p>
                 </div>
-                <div class="metric text-center bg-white rounded shadow p-4">
+                <div
+                    class="metric flex-1 text-center bg-white rounded shadow p-4"
+                >
                     <h3 class="text-3xl font-bold">{{ totalKajians }}</h3>
                     <p>Total Kajian</p>
                 </div>
