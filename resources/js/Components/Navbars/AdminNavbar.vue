@@ -27,7 +27,7 @@
                     href="/logout"
                     method="post"
                     as="button"
-                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-left"
                 >
                     Logout
                 </Link>
