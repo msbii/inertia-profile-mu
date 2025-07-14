@@ -2,11 +2,8 @@
     <!-- <nav
         class="fixed top-0 left-16 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     > -->
-    <!-- <nav
-        class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
-    > -->
     <nav
-        class="fixed top-0 w-full z-[9999] bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+        class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
         <div class="text-white font-bold text-lg">
