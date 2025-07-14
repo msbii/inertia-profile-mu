@@ -3,15 +3,15 @@
         class="fixed top-0 left-16 w-full md:w-[calc(100%-16rem)] z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     > -->
     <nav
-        class="fixed top-0 z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
+        class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="w-full md:w-2/12 px-4 text-white font-bold text-lg">
+        <div class="w-full px-4 text-white font-bold text-lg">
             <i class="fas fa-home mr-2"></i> Beranda
         </div>
 
         <!-- User Dropdown -->
-        <div class="w-full md:w-10/12 px-4 relative" ref="dropdownWrapper">
+        <div class="w-full px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
