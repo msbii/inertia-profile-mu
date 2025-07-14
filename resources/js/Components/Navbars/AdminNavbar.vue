@@ -21,7 +21,7 @@
             </button>
             <div
                 v-if="showDropdown"
-                class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-[999]"
+                class="w-full absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-[999]"
             >
                 <Link
                     href="/logout"
