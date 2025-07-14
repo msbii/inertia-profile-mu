@@ -6,8 +6,14 @@
         class="fixed top-0 w-full z-50 bg-emerald-600 shadow-md px-4 py-3 flex items-center justify-between"
     >
         <!-- Brand -->
-        <div class="w-full md:w-8/12 px-4 text-white font-bold text-lg">
-            <i class="fas fa-home mr-2"></i> Beranda
+        <div class="w-full md:w-8/12 px-4">
+            <a
+                class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
+                href="/"
+            >
+                <i class="fas fa-home"></i>
+                Beranda
+            </a>
         </div>
 
         <!-- User Dropdown -->
