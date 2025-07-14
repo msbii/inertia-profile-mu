@@ -11,7 +11,7 @@
         </div>
 
         <!-- User Dropdown -->
-        <div class="w-full px-4 relative" ref="dropdownWrapper">
+        <div class="px-4 relative" ref="dropdownWrapper">
             <button
                 @click="toggleDropdown"
                 class="text-white font-semibold flex items-center gap-2"
@@ -21,7 +21,7 @@
             </button>
             <div
                 v-if="showDropdown"
-                class="w-48 w-full absolute mt-2 bg-white shadow-lg rounded z-[999]"
+                class="w-full absolute mt-2 bg-white shadow-lg rounded z-[999]"
             >
                 <Link
                     href="/logout"
