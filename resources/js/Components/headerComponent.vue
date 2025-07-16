@@ -517,6 +517,7 @@ watch(showHiddenBar, (val) => {
 
 const toggleHiddenBar = () => {
     showHiddenBar.value = !showHiddenBar.value;
+    console.log("Toggled:", showHiddenBar.value);
 };
 // methods
 // function toggleHiddenBar() {
