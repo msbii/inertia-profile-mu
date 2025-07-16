@@ -301,7 +301,7 @@
     </header>
 
     <!-- Hidden Bar -->
-    <section class="hidden-bar right-align" v-show="true">
+    <section class="hidden-bar right-align" v-show="showHiddenBar">
         <div class="hidden-bar-closer">
             <button class="btn" @click="toggleHiddenBar">
                 <i class="fa fa-close"></i>
