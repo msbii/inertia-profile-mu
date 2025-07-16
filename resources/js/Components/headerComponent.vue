@@ -303,7 +303,7 @@
     <!-- Hidden Bar -->
     <section class="hidden-bar right-align" v-show="true">
         <div class="hidden-bar-closer">
-            <button class="btn" @click="closeHiddenBar">
+            <button class="btn" @click="toggleHiddenBar">
                 <i class="fa fa-close"></i>
             </button>
         </div>
