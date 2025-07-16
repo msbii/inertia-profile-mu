@@ -1120,7 +1120,7 @@ li {
 
 ***/
 
-/* .hidden-bar {
+.hidden-bar {
     position: fixed;
     top: 0;
     right: 0;
@@ -1133,9 +1133,9 @@ li {
     -ms-transition: all 700ms ease;
     -o-transition: all 700ms ease;
     -moz-transition: all 700ms ease;
-} */
+}
 
-.hidden-bar {
+/* .hidden-bar {
     position: fixed;
     top: 0;
     right: 0;
@@ -1146,11 +1146,11 @@ li {
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     transform: translateX(100%); /* default tersembunyi */
     transition: transform 0.3s ease-in-out;
-}
+} */
 
-.hidden-bar.right-align.show {
+/* .hidden-bar.right-align.show {
     transform: translateX(0); /* muncul dari kanan */
-}
+} */
 
 .hidden-bar .mCSB_inside > .mCSB_container {
     margin-right: 0px;
