@@ -409,7 +409,7 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue";
+import { computed, ref, onMounted, watch } from "vue";
 import { Link, usePage, useForm, router } from "@inertiajs/vue3";
 import { createPopper } from "@popperjs/core";
 import debounce from "lodash.debounce";
@@ -426,7 +426,6 @@ const page = usePage();
 const auth = usePage().props.auth;
 const user = usePage().props.auth.user;
 // state
-const showHiddenBar = ref(true);
 
 const requestRole = () => {
     router.post("/request-role");
@@ -504,11 +503,26 @@ function toggleDropdown(event) {
     }
 }
 
-// methods
-function toggleHiddenBar() {
+const showHiddenBar = ref(true);
+// Saat halaman dimuat, ambil dari localStorage
+onMounted(() => {
+    const saved = localStorage.getItem("showHiddenBar");
+    showHiddenBar.value = saved === "true";
+});
+
+// Simpan ke localStorage tiap kali berubah
+watch(showHiddenBar, (val) => {
+    localStorage.setItem("showHiddenBar", val);
+});
+
+const toggleHiddenBar = () => {
     showHiddenBar.value = !showHiddenBar.value;
-    console.log("Toggled:", showHiddenBar.value);
-}
+};
+// methods
+// function toggleHiddenBar() {
+//     showHiddenBar.value = !showHiddenBar.value;
+//     console.log("Toggled:", showHiddenBar.value);
+// }
 function closeHiddenBar() {
     showHiddenBar.value = false;
 }
