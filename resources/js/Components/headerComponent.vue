@@ -426,7 +426,7 @@ const page = usePage();
 const auth = usePage().props.auth;
 const user = usePage().props.auth.user;
 // state
-const showHiddenBar = ref(false);
+const showHiddenBar = ref(true);
 
 const requestRole = () => {
     router.post("/request-role");
