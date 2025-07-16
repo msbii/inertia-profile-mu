@@ -301,7 +301,7 @@
     </header>
 
     <!-- Hidden Bar -->
-    <section class="hidden-bar right-align" v-show="false">
+    <section class="hidden-bar right-align" v-show="true">
         <!-- <section :class="['hidden-bar right-align', { show: showHiddenBar }]"> -->
         <div class="hidden-bar-closer">
             <!-- <button class="btn" @click="closeHiddenBar"> -->
