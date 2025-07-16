@@ -304,9 +304,7 @@
     <!-- <section class="hidden-bar right-align" v-show="showHiddenBar"> -->
     <section :class="['hidden-bar right-align', { show: showHiddenBar }]">
         <div class="hidden-bar-closer">
-            <button class="btn" @click="toggleHiddenBar">
-                <i class="fa fa-close"></i>
-            </button>
+            <button class="btn" @click="toggleHiddenBar"></button>
         </div>
         <!-- Hidden Bar Wrapper -->
         <div class="hidden-bar-wrapper">
