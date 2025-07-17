@@ -301,8 +301,9 @@
     </header>
 
     <!-- Hidden Bar -->
-    <!-- <section class="hidden-bar right-align" v-show="true"> -->
-    <section :class="['hidden-bar right-align', { show: showHiddenBar }]">
+    <!-- <section class="hidden-bar right-align" v-show="true"> --></section>
+        <section class="hidden-bar right-align show">
+    <!-- <section :class="['hidden-bar right-align', { show: showHiddenBar }]"> -->
         <!-- <button class="btn" @click="closeHiddenBar"> -->
         <div class="hidden-bar-closer">
             <button class="btn" @click="toggleHiddenBar">
@@ -510,6 +511,7 @@ const showHiddenBar = ref(false);
 onMounted(() => {
     const saved = localStorage.getItem("showHiddenBar");
     showHiddenBar.value = saved === "true";
+    console.log("Mounted, showHiddenBar set to:", showHiddenBar.value);
 });
 
 // Watch agar setiap perubahan disimpan
