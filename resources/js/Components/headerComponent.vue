@@ -412,11 +412,26 @@
 
             <div class="social-icons">
                 <ul>
-                    <li><Link> href="#" class="fab fa-facebook-f"></Link></li>
-                    <li><Link> href="#" class="fab fa-twitter"></Link></li>
-                    <li><Link> href="#" class="fab fa-instagram"></Link></li>
-                    <li><Link> href="#" class="fab fa-youtube"></Link></li>
-                    <li><Link> href="#" class="fab fa-tiktok"></Link></li>
+                    <li>
+                        <Link class="text-white" href="#"
+                            ><i class="fab fa-facebook-f"></i
+                        ></Link>
+                    </li>
+                    <li>
+                        <Link class="text-white" href="#"
+                            ><i class="fab fa-twitter"></i
+                        ></Link>
+                    </li>
+                    <li>
+                        <Link class="text-white" href="#"
+                            ><i class="fab fa-instagram"></i
+                        ></Link>
+                    </li>
+                    <li>
+                        <Link class="text-white" href="#"
+                            ><i class="fab fa-youtube"></i
+                        ></Link>
+                    </li>
                 </ul>
             </div>
         </div>
