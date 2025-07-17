@@ -301,8 +301,6 @@
     </header>
 
     <!-- Hidden Bar -->
-    <!-- <section class="hidden-bar right-align" v-show="true"> -->
-    <!-- <section class="hidden-bar right-align show"> -->
     <section
         class="hidden-bar right-align"
         :class="{ 'visible-sidebar': showHiddenBar }"
@@ -322,8 +320,8 @@
                     ><img
                         :src="'/img/Logo.png'"
                         alt="Logo"
-                        width="200"
-                        height="150"
+                        width="100"
+                        height="75"
                 /></a>
                 <!-- <a href="/"><img src="{{ asset('img')}}/Logo.png" alt="" width="200" height="150"></a>			 -->
             </div>
@@ -335,9 +333,9 @@
                 <ul class="navigation">
                     <li><Link href="/">Home</Link></li>
 
-                    <li class="dropdown">
+                    <li class="dropdown" @click="toggleDropdown">
                         <Link href="#">Lingkup</Link>
-                        <ul class="submenu">
+                        <ul class="submenu" v-show="dropdownPopoverShow">
                             <li>
                                 <Link href="/view/muhammadiyah"
                                     >Muhammadiyah</Link
