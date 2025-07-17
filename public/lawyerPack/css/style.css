@@ -1135,25 +1135,23 @@ li {
     -moz-transition: all 700ms ease;
 } */
 
-
-
-.hidden-bar .mCSB_inside > .mCSB_container {
+/* .hidden-bar .mCSB_inside > .mCSB_container {
     margin-right: 0px;
-}
+} */
 
-.hidden-bar.right-align {
+/* .hidden-bar.right-align {
     right: -400px;
 }
 
 .hidden-bar.right-align.visible-sidebar {
     right: 0px;
-}
+} */
 
-.hidden-bar.right-align .hidden-bar-closer {
+/* .hidden-bar.right-align .hidden-bar-closer {
     left: -20px;
-}
+} */
 
-.hidden-bar.left-align {
+/* .hidden-bar.left-align {
     left: -400px;
 }
 
@@ -1196,7 +1194,7 @@ li {
     border: none;
     outline: none;
     font-size: 14px;
-}
+} */
 
 .hidden-bar .social-icons {
     text-align: center;
