@@ -334,7 +334,13 @@
                     <li><Link href="/">Home</Link></li>
 
                     <li class="dropdown">
-                        <Link @click.prevent="toggleDropdown">Lingkup</Link>
+                        <!-- <Link @click.prevent="toggleDropdown">Lingkup</Link> -->
+                        <button
+                            @click="toggleDropdownMenu"
+                            class="dropdown-trigger"
+                        >
+                            Lingkup
+                        </button>
                         <ul class="submenu" v-show="dropdownPopoverShow">
                             <li>
                                 <Link href="/view/muhammadiyah"

@@ -873,6 +873,14 @@ li {
     margin: 4px 0; /* Atur jarak vertikal atas dan bawah */
 }
 
+.dropdown-trigger {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
 .logout {
     display: flex;
     justify-content: center; /* Mengatur posisi horizontal */
