@@ -342,7 +342,7 @@
                             Lingkup
                             <i class="bi bi-chevron-double-down"></i>
                         </button>
-                        <ul class="submenu" v-show="dropdownPopoverShow">
+                        <ul class="submenu" v-show="dropdownPopoverShowLingkup">
                             <li>
                                 <Link href="/view/muhammadiyah"
                                     >Muhammadiyah</Link
