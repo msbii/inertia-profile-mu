@@ -528,9 +528,9 @@ const toggleHiddenBar = () => {
 //     showHiddenBar.value = !showHiddenBar.value;
 //     console.log("Toggled:", showHiddenBar.value);
 // }
-function closeHiddenBar() {
-    showHiddenBar.value = false;
-}
+// function closeHiddenBar() {
+//     showHiddenBar.value = false;
+// }
 </script>
 
 <style>
