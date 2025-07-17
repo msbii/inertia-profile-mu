@@ -370,7 +370,7 @@
                             Amal Usaha
                             <i class="bi bi-chevron-double-down"></i>
                         </button>
-                        <ul class="submenu">
+                        <ul class="submenu" v-show="dropdownPopoverShow">
                             <li><Link href="shop.html">WarMA</Link></li>
                             <li><Link href="/amal/tkAba">TK ABA</Link></li>
                             <li>
