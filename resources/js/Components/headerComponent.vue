@@ -364,13 +364,13 @@
                     <li class="dropdown">
                         <!-- <Link>Amal Usaha</Link> -->
                         <button
-                            @click="BtntoggleDropdownAmal"
+                            @click="toggleDropdownAmal"
                             class="dropdown-trigger"
                         >
                             Amal Usaha
                             <i class="bi bi-chevron-double-down"></i>
                         </button>
-                        <ul class="submenu" v-show="dropdownPopoverShow">
+                        <ul class="submenu" v-show="dropdownPopoverShowAmal">
                             <li><Link href="shop.html">WarMA</Link></li>
                             <li><Link href="/amal/tkAba">TK ABA</Link></li>
                             <li>
@@ -537,6 +537,21 @@ function toggleDropdownLingkup(event) {
                 placement: "bottom-start",
             }
         );
+    }
+}
+const dropdownPopoverShowAmal = ref(false);
+const btnDropdownRefAmal = ref(null);
+const popoverDropdownRefAmal = ref(null);
+
+// Toggle dropdown
+function toggleDropdownAmal(event) {
+    event.preventDefault();
+    dropdownPopoverShowAmal.value = !dropdownPopoverShowAmal.value;
+
+    if (dropdownPopoverShowAmal.value) {
+        createPopper(btnDropdownRefAmal.value, popoverDropdownRefAmal.value, {
+            placement: "bottom-start",
+        });
     }
 }
 
