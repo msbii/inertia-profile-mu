@@ -528,3 +528,20 @@ function closeHiddenBar() {
     showHiddenBar.value = false;
 }
 </script>
+
+<style>
+.hidden-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+.hidden-bar.show {
+    transform: translateX(0);
+}
+</style>

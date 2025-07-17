@@ -1135,22 +1135,7 @@ li {
     -moz-transition: all 700ms ease;
 } */
 
-.hidden-bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px; /* atau sesuai kebutuhan */
-    height: 100vh;
-    background-color: white;
-    z-index: 9999;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%); /* default tersembunyi */
-    transition: transform 0.3s ease-in-out;
-}
 
-.hidden-bar.right-align.show {
-    transform: translateX(0); /* muncul dari kanan */
-}
 
 .hidden-bar .mCSB_inside > .mCSB_container {
     margin-right: 0px;
