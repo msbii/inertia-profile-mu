@@ -333,7 +333,7 @@
                 <ul class="navigation">
                     <li><Link href="/">Home</Link></li>
 
-                    <li class="dropdown" @click="toggleDropdown">
+                    <li class="dropdown">
                         <Link href="#" @click.prevent="toggleDropdown"
                             >Lingkup</Link
                         >
