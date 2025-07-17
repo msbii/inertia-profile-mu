@@ -511,39 +511,9 @@ function toggleDropdown(event) {
 // State untuk toggle
 const showHiddenBar = ref(false);
 
-// Simpan toggle state ke localStorage agar tetap setelah reload
-onMounted(() => {
-    const saved = localStorage.getItem("showHiddenBar");
-    showHiddenBar.value = saved === "true";
-    console.log("Mounted, showHiddenBar set to:", showHiddenBar.value);
-});
-
-// Watch agar setiap perubahan disimpan
-watch(showHiddenBar, (val) => {
-    localStorage.setItem("showHiddenBar", val);
-});
-
 // Fungsi untuk toggle
 const toggleHiddenBar = () => {
     showHiddenBar.value = !showHiddenBar.value;
     console.log("Toggled:", showHiddenBar.value);
 };
 </script>
-
-<!-- <style scoped>
-.hidden-bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    background-color: white;
-    z-index: 9999;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-}
-
-.hidden-bar.show {
-    transform: translateX(0);
-}
-</style> -->
