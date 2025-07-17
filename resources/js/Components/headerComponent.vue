@@ -336,7 +336,7 @@
                     <li class="dropdown">
                         <!-- <Link @click.prevent="toggleDropdown">Lingkup</Link> -->
                         <button
-                            @click="toggleDropdown"
+                            @click="BtntoggleDropdown('lingkup')"
                             class="dropdown-trigger"
                         >
                             Lingkup
@@ -364,7 +364,7 @@
                     <li class="dropdown">
                         <!-- <Link>Amal Usaha</Link> -->
                         <button
-                            @click="toggleDropdown"
+                            @click="BtntoggleDropdown('amal')"
                             class="dropdown-trigger"
                         >
                             Amal Usaha
@@ -519,6 +519,15 @@ function toggleDropdown(event) {
         });
     }
 }
+
+const dropdowns = ref({
+    lingkup: false,
+    amal: false,
+});
+
+const BtntoggleDropdown = (menu) => {
+    dropdowns.value[menu] = !dropdowns.value[menu];
+};
 
 // State untuk toggle
 const showHiddenBar = ref(false);
