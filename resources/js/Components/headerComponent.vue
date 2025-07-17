@@ -301,14 +301,14 @@
     </header>
 
     <!-- Hidden Bar -->
-    <!-- <section class="hidden-bar right-align" v-show="true"> -->
-    <section :class="['hidden-bar right-align', { show: showHiddenBar }]">
+    <section class="hidden-bar right-align" v-show="true">
+        <!-- <section :class="['hidden-bar right-align', { show: showHiddenBar }]"> -->
         <!-- <button class="btn" @click="closeHiddenBar"> -->
-        <!-- <div class="hidden-bar-closer">
+        <div class="hidden-bar-closer">
             <button class="btn" @click="toggleHiddenBar">
                 <i class="fa fa-close"></i>
             </button>
-        </div> -->
+        </div>
         <!-- Hidden Bar Wrapper -->
         <div class="hidden-bar-wrapper">
             <!-- .logo -->
@@ -528,20 +528,3 @@ function closeHiddenBar() {
     showHiddenBar.value = false;
 }
 </script>
-
-<!-- <style scoped>
-/* Tambahkan styling di sini */
-</style> -->
-<style>
-.hidden-bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    background-color: white;
-    z-index: 10000;
-    padding: 20px;
-    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3);
-}
-</style>
