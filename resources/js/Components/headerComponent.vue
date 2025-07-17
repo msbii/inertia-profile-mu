@@ -334,9 +334,7 @@
                     <li><Link href="/">Home</Link></li>
 
                     <li class="dropdown">
-                        <Link href="#" @click.prevent="toggleDropdown"
-                            >Lingkup</Link
-                        >
+                        <Link @click.prevent="toggleDropdown">Lingkup</Link>
                         <ul class="submenu" v-show="dropdownPopoverShow">
                             <li>
                                 <Link href="/view/muhammadiyah"
@@ -357,7 +355,7 @@
                     <li><Link href="/kabar">Kabar</Link></li>
                     <li><Link href="/kategori/kajian">Kajian</Link></li>
                     <li class="dropdown">
-                        <Link href="#">Amal Usaha</Link>
+                        <Link>Amal Usaha</Link>
                         <ul class="submenu">
                             <li><Link href="shop.html">WarMA</Link></li>
                             <li><Link href="/amal/tkAba">TK ABA</Link></li>
