@@ -530,7 +530,7 @@ const toggleHiddenBar = () => {
 };
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .hidden-bar {
     position: fixed;
     top: 0;
@@ -546,4 +546,4 @@ const toggleHiddenBar = () => {
 .hidden-bar.show {
     transform: translateX(0);
 }
-</style>
+</style> -->
