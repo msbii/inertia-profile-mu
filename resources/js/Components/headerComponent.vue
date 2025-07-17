@@ -340,6 +340,7 @@
                             class="dropdown-trigger"
                         >
                             Lingkup
+                            <i class="bi bi-chevron-double-down"></i>
                         </button>
                         <ul class="submenu" v-show="dropdownPopoverShow">
                             <li>
@@ -361,7 +362,14 @@
                     <li><Link href="/kabar">Kabar</Link></li>
                     <li><Link href="/kategori/kajian">Kajian</Link></li>
                     <li class="dropdown">
-                        <Link>Amal Usaha</Link>
+                        <!-- <Link>Amal Usaha</Link> -->
+                        <button
+                            @click="toggleDropdown"
+                            class="dropdown-trigger"
+                        >
+                            Amal Usaha
+                            <i class="bi bi-chevron-double-down"></i>
+                        </button>
                         <ul class="submenu">
                             <li><Link href="shop.html">WarMA</Link></li>
                             <li><Link href="/amal/tkAba">TK ABA</Link></li>
