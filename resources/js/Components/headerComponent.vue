@@ -336,7 +336,7 @@
                     <li class="dropdown">
                         <!-- <Link @click.prevent="toggleDropdown">Lingkup</Link> -->
                         <button
-                            @click="toggleDropdownMenu"
+                            @click="toggleDropdown"
                             class="dropdown-trigger"
                         >
                             Lingkup
