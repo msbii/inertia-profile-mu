@@ -51,7 +51,7 @@ console.log("posts:", props.posts);
 
 <template>
     <Layout>
-        <section class="w-full max-w-6xl mx-auto my-10">
+        <!-- <section class="w-full max-w-6xl mx-auto my-10">
             <Swiper
                 :modules="[Navigation, Autoplay, EffectFade]"
                 :slides-per-view="1"
@@ -91,7 +91,7 @@ console.log("posts:", props.posts);
                     </div>
                 </SwiperSlide>
             </Swiper>
-        </section>
+        </section> -->
 
         <div v-if="posts.data.length">
             <!--Styled Heading-->
