@@ -71,6 +71,56 @@
 /*** 
 
 ====================================================================
+	ADD Settings
+====================================================================
+
+ ***/
+
+.skeleton-box {
+    background: #f3f3f3;
+    padding: 1rem;
+    border-radius: 8px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: #ddd;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.text-placeholder {
+    height: 14px;
+    background: #ccc;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.text-placeholder.short {
+    width: 40%;
+}
+
+.text-placeholder.long {
+    width: 90%;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*** 
+
+====================================================================
 	Global Settings
 ====================================================================
 
