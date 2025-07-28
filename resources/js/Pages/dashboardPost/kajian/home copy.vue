@@ -6,13 +6,13 @@ import Layout from "@/shared/mainLayout.vue";
 const props = defineProps({
     title: String,
     active: String,
+    // kajian: Array,
     kajian: Object,
     pp: Array,
 });
 
-if (import.meta.env.DEV) {
-    console.log("kajian:", props.kajian);
-}
+// Debugging
+console.log("kajian:", props.kajian);
 </script>
 
 <template>
@@ -43,8 +43,7 @@ if (import.meta.env.DEV) {
         <!--News Section-->
         <section class="news-section extended">
             <div class="auto-container">
-                <!-- Jika data tersedia -->
-                <div v-if="kajian?.data?.length">
+                <div v-if="kajian.data.length">
                     <div class="row clearfix">
                         <article
                             v-for="post in kajian.data"
@@ -61,7 +60,6 @@ if (import.meta.env.DEV) {
                                         "
                                         width="370"
                                         height="250"
-                                        loading="lazy"
                                         class="card-img-top"
                                         :alt="post.title"
                                     />
@@ -118,21 +116,9 @@ if (import.meta.env.DEV) {
                                                 By.
                                                 <Link
                                                     :href="`/speaker/kajian/${post.speaker}`"
+                                                    >{{ post.speaker }}</Link
                                                 >
-                                                    {{ post.speaker }}
-                                                </Link>
-                                            </span>
-                                            <span v-else>
-                                                By
-                                                <Link
-                                                    v-if="post.author"
-                                                    :href="`/authors/kajian/${post.author.username}`"
-                                                >
-                                                    {{ post.author.name }}
-                                                </Link>
-                                            </span>
-                                            <small class="text-muted">
-                                                {{
+                                                <small class="text-muted">{{
                                                     new Date(
                                                         post.created_at
                                                     ).toLocaleDateString(
@@ -142,8 +128,29 @@ if (import.meta.env.DEV) {
                                                             month: "short",
                                                         }
                                                     )
-                                                }}
-                                            </small>
+                                                }}</small>
+                                            </span>
+                                            <span v-else>
+                                                By
+                                                <Link
+                                                    v-if="post.author"
+                                                    :href="`/authors/kajian/${post.author.username}`"
+                                                    >{{
+                                                        post.author.name
+                                                    }}</Link
+                                                >
+                                                <small class="text-muted">{{
+                                                    new Date(
+                                                        post.created_at
+                                                    ).toLocaleDateString(
+                                                        "id-ID",
+                                                        {
+                                                            day: "2-digit",
+                                                            month: "short",
+                                                        }
+                                                    )
+                                                }}</small>
+                                            </span>
                                         </small>
                                     </p>
 
@@ -165,57 +172,11 @@ if (import.meta.env.DEV) {
                             </div>
                         </article>
                     </div>
-                </div>
 
-                <!-- Jika data belum ada (loading) -->
-                <div v-else-if="kajian === undefined || !kajian.data">
-                    <div class="row clearfix">
-                        <div
-                            v-for="i in 3"
-                            :key="i"
-                            class="column featured-news-column col-md-4 col-sm-6 col-xs-12"
-                        >
-                            <div class="inner-box skeleton-box">
-                                <div
-                                    style="
-                                        width: 100%;
-                                        height: 250px;
-                                        background-color: #eee;
-                                        margin-bottom: 10px;
-                                    "
-                                ></div>
-                                <div
-                                    style="
-                                        height: 20px;
-                                        width: 70%;
-                                        background-color: #ddd;
-                                        margin-bottom: 8px;
-                                    "
-                                ></div>
-                                <div
-                                    style="
-                                        height: 16px;
-                                        width: 90%;
-                                        background-color: #ddd;
-                                    "
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Styled Pagination -->
                 </div>
-
-                <!-- Jika tidak ada post -->
                 <p v-else class="text-center fs-4">No Post Found</p>
             </div>
         </section>
     </Layout>
 </template>
-
-<style scoped>
-.card-img-top {
-    width: 370px;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-</style>
