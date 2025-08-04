@@ -23,7 +23,6 @@ console.log("detail Postingan:", props.post);
             class="page-title"
             style="background-image: url('img/Logo3.jpg')"
         >
-            <!-- <img :src="'/img/Logo3.jpg'" alt="" /> -->
             <div class="auto-container">
                 <h1>Detail Postingan</h1>
             </div>
