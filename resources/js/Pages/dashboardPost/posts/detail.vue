@@ -21,7 +21,7 @@ console.log("detail Postingan:", props.post);
         <!--Page Title-->
         <section
             class="page-title"
-            style="background-image: url('img/Logo3.jpg')"
+            style="background-image: url('/img/Logo3.jpg')"
         >
             <div class="auto-container">
                 <h1>Detail Postingan</h1>
