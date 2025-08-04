@@ -27,11 +27,12 @@
                 </button>
             </div>
 
-            <div v-if="post.image" class="overflow-hidden max-h-[400px]">
+            <div
+                v-if="post.image"
+                style="max-height: 400px; max-width: 750px; overflow: hidden"
+            >
                 <img
                     :src="`/storage/${post.image}`"
-                    width="750"
-                    height="400"
                     class="card-img-top mt-3"
                     :alt="post.category?.name"
                 />
