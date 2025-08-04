@@ -30,6 +30,8 @@
             <div v-if="post.image" class="overflow-hidden max-h-[400px]">
                 <img
                     :src="`/storage/${post.image}`"
+                    width="750"
+                    height="400"
                     class="card-img-top mt-3"
                     :alt="post.category?.name"
                 />

@@ -75,7 +75,10 @@
                 }}</small>
             </div>
 
-            <div v-if="post.image" style="max-height: 400px; overflow: hidden">
+            <div
+                v-if="post.image"
+                style="max-height: 400px; max-width: 750px; overflow: hidden"
+            >
                 <img
                     :src="`/storage/${post.image}`"
                     class="card-img-top mt-3"
