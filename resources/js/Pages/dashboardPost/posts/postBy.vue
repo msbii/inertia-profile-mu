@@ -18,7 +18,7 @@ console.log("posts By:", props.posts);
         <!--Page Title-->
         <section
             class="page-title"
-            style="background-image: url('img/Logo3.jpg')"
+            style="background-image: url('/img/Logo3.jpg')"
         >
             <!-- <img :src="'/img/Logo3.jpg'" alt="" /> -->
             <div class="auto-container">
