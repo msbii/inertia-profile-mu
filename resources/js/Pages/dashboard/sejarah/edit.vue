@@ -15,8 +15,7 @@
                 class="space-y-6"
             >
                 <div>
-                    <label class="block font-medium mb-1">Judul</label>
-                    <p>{{ post.title }}</p>
+                    <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
                 </div>
                 <div>
                     <label for="image" class="block font-medium">Gambar</label>
