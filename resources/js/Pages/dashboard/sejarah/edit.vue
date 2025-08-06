@@ -15,6 +15,10 @@
                 class="space-y-6"
             >
                 <div>
+                    <label class="block font-medium mb-1">Judul</label>
+                    <p>{{ post.title }}</p>
+                </div>
+                <div>
                     <label for="image" class="block font-medium">Gambar</label>
                     <input type="file" @change="previewImage" />
                     <img
