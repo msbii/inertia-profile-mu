@@ -15,23 +15,6 @@
                 class="space-y-6"
             >
                 <div>
-                    <label for="title" class="block font-medium">Judul</label>
-                    <input
-                        v-model="form.title"
-                        type="text"
-                        id="title"
-                        class="w-full border rounded p-2"
-                        :class="{ 'border-red-500': form.errors.title }"
-                        @change="generateSlug"
-                    />
-                    <p v-if="form.errors.title" class="text-red-500 text-sm">
-                        {{ form.errors.title }}
-                    </p>
-                </div>
-
-                <input type="hidden" v-model="form.slug" />
-
-                <div>
                     <label for="image" class="block font-medium">Gambar</label>
                     <input type="file" @change="previewImage" />
                     <img
@@ -107,8 +90,6 @@ const previewUrl = ref(null);
 // });
 
 const form = useForm({
-    title: props.post?.title || "",
-    slug: props.post?.slug || "",
     body: props.post?.body || "",
     image: null,
     oldImage: props.post?.image || "",
