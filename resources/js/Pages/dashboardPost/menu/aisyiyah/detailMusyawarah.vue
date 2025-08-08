@@ -104,12 +104,14 @@ console.log("musyawarah:", props.musyawarah);
                                 />
 
                                 <br />
-                                <div class="text font-bold">
-                                    Agenda:
+                                <div class="text mb-2">
+                                    <span class="font-bold">Agenda:</span>
                                     <div v-html="musyawarah.agenda"></div>
                                 </div>
-                                <div class="text font-bold">
-                                    Hasil Musyawarah:
+                                <div class="text">
+                                    <span class="font-bold"
+                                        >Hasil Musyawarah:</span
+                                    >
                                     <div v-html="musyawarah.hasil"></div>
                                 </div>
                             </div>
