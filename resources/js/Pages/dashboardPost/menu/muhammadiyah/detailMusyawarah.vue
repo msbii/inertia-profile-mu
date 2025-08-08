@@ -69,9 +69,11 @@ console.log("musyawarah:", props.musyawarah);
                                 class=""
                                 style="font-size: 15px; line-height: 1.7"
                             >
-                                <h3>Detail Muhammadiyah</h3>
+                                <h3 class="font-bold">Detail Muhammadiyah</h3>
                                 <br />
-                                <h3>Musyawarah: {{ musyawarah.title }}</h3>
+                                <h3 class="font-bold">
+                                    Musyawarah: {{ musyawarah.title }}
+                                </h3>
                                 <h5>
                                     Tanggal: {{ musyawarah.time_formatted }}
                                 </h5>
@@ -102,12 +104,14 @@ console.log("musyawarah:", props.musyawarah);
                                 />
 
                                 <br />
-                                <div class="text">
-                                    Agenda:
+                                <div class="text mb-2">
+                                    <span class="font-bold">Agenda:</span>
                                     <div v-html="musyawarah.agenda"></div>
                                 </div>
                                 <div class="text">
-                                    Hasil Musyawarah:
+                                    <span class="font-bold"
+                                        >Hasil Musyawarah:</span
+                                    >
                                     <div v-html="musyawarah.hasil"></div>
                                 </div>
                             </div>
