@@ -53,12 +53,12 @@
             <div class="text mb-2">
                 <span class="font-bold">Agenda:</span>
                 <!-- Deskripsi HTML -->
-                <article class="my-3" v-html="post.agenda"></article>
+                <article v-html="post.agenda"></article>
             </div>
             <div class="text">
                 <span class="font-bold">Hasil Musyawarah:</span>
                 <!-- Deskripsi HTML -->
-                <article class="my-3" v-html="post.hasil"></article>
+                <article v-html="post.hasil"></article>
             </div>
         </div>
     </Layout>
