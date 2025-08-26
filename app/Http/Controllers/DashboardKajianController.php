@@ -210,9 +210,9 @@ class DashboardKajianController extends Controller
             $image->save($thumbnailFullPath);
 
             // Simpan nama file saja (atau path tergantung pilihan sebelumnya)
-            $validatedData['image'] = $filename;
+            $validateData['image'] = $filename;
         } else {
-            $validatedData['image'] = $request->oldImage;
+            $validateData['image'] = $request->oldImage;
         }
 
         // Jika ada file baru
