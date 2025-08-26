@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
@@ -97,8 +98,32 @@ class DashboardPostController extends Controller
             'body' => 'required',
         ]);
     
-        if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->store('post-images','public');
+        // if ($request->file('image')) {
+        //     $validateData['image'] = $request->file('image')->store('post-images','public');
+        // }
+
+        if ($request->file('image')) 
+        {
+            // Simpan file asli ke storage/app/public/post-images/original
+            $originalPath = $request->file('image')->store('post-images/original', 'public');
+            $filename = basename($originalPath);
+
+            // Path thumbnail
+            $thumbnailPath = 'post-images/thumbnail/' . $filename;
+            $thumbnailFullPath = storage_path('app/public/' . $thumbnailPath);
+
+            // Pastikan folder thumbnail ada
+            if (!file_exists(dirname($thumbnailFullPath))) {
+                mkdir(dirname($thumbnailFullPath), 0777, true);
+            }
+
+            // Buat thumbnail (300x300)
+            $image = Image::read($request->file('image'))
+                ->cover(300, 300); // crop & resize biar square
+            $image->save($thumbnailFullPath);
+
+            // Simpan nama file (nanti bisa dipanggil sebagai asset('storage/post-images/original/'.$filename))
+            $validateData['image'] = $filename;
         }
     
         // $validateData['user_id'] = auth()->user()->id();
