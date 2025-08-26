@@ -497,7 +497,7 @@ console.log("posts:", props.posts);
                                         <div class="content">
                                             <h3>
                                                 <Link
-                                                    :href="`/posts/${post.slug}`"
+                                                    :href="`/kajian/${post.slug}`"
                                                     >{{ post.title }}</Link
                                                 >
                                             </h3>

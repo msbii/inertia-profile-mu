@@ -235,7 +235,7 @@ console.log("detail kajian:", props.post);
                                         <div class="post-thumb">
                                             <Link :href="`/posts/${post.slug}`">
                                                 <img
-                                                    :src="`/storage/${post.image}`"
+                                                    :src="`/storage/post-images/thumbnail/${post.image}`"
                                                     :alt="post.title"
                                                 />
                                             </Link>

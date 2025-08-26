@@ -266,7 +266,7 @@ console.log("detail Postingan:", props.post);
                                                             class="d-flex justify-content-center"
                                                         >
                                                             <img
-                                                                :src="`/storage/${popularPosts[0].image}`"
+                                                                :src="`/storage/post-images/thumbnail/${popularPosts[0].image}`"
                                                                 width="380"
                                                                 height="300"
                                                                 class="img-fluid"
@@ -407,7 +407,7 @@ console.log("detail Postingan:", props.post);
                                     <div class="post-thumb">
                                         <Link :href="`/posts/${item.slug}`"
                                             ><img
-                                                :src="`/storage/${item.image}`"
+                                                :src="`/storage/post-images/thumbnail/${item.image}`"
                                                 alt=""
                                         /></Link>
                                     </div>
