@@ -32,7 +32,7 @@
                 style="max-height: 400px; max-width: 750px; overflow: hidden"
             >
                 <img
-                    :src="`/storage/${post.image}`"
+                    :src="`/storage/post-images/original/${post.image}`"
                     class="card-img-top mt-3"
                     :alt="post.category?.name"
                 />

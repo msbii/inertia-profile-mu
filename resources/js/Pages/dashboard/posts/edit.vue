@@ -161,7 +161,7 @@ onMounted(() => {
                     />
                     <img
                         v-else-if="form.oldImage"
-                        :src="`/storage/${form.oldImage}`"
+                        :src="`/storage/post-images/original/${form.oldImage}`"
                         class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <!-- <input
