@@ -255,7 +255,7 @@ console.log("posts:", props.posts);
 
                                                 <img
                                                     v-if="post.image"
-                                                    :src="`/storage/${post.image}`"
+                                                    :src="`/storage/post-images/thumbnail/${post.image}`"
                                                     width="370"
                                                     height="100"
                                                     class="card-img-top"
