@@ -119,7 +119,7 @@ class DashboardPostController extends Controller
 
             // Buat thumbnail (300x300)
             $image = Image::read($request->file('image'))
-                ->cover(300, 300); // crop & resize biar square
+                ->cover(370, 250); // crop & resize biar square
             $image->save($thumbnailFullPath);
 
             // Simpan nama file (nanti bisa dipanggil sebagai asset('storage/post-images/original/'.$filename))
@@ -180,12 +180,42 @@ class DashboardPostController extends Controller
         $validatedData = $request->validate($rules);
 
         // Proses upload gambar baru
+        // if ($request->file('image')) {
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $validatedData['image'] = $request->file('image')->store('post-images', 'public');
+        // }else {
+        //     $validatedData['image'] = $request->oldImage;
+        // }
+
+        // Proses upload gambar baru
         if ($request->file('image')) {
+            // Hapus gambar lama (original + thumbnail)
             if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+                Storage::disk('public')->delete('post-images/original/' . $request->oldImage);
+                Storage::disk('public')->delete('post-images/thumbnail/' . $request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
-        }else {
+
+            // Simpan gambar original
+            $originalPath = $request->file('image')->store('post-images/original', 'public');
+            $filename = basename($originalPath);
+
+            // Buat thumbnail
+            $thumbnailPath = 'post-images/thumbnail/' . $filename;
+            $thumbnailFullPath = storage_path('app/public/' . $thumbnailPath);
+
+            if (!file_exists(dirname($thumbnailFullPath))) {
+                mkdir(dirname($thumbnailFullPath), 0777, true);
+            }
+
+            $image = Image::read($request->file('image'))
+                ->cover(370, 250); // crop + resize
+            $image->save($thumbnailFullPath);
+
+            // Simpan nama file saja (atau path tergantung pilihan sebelumnya)
+            $validatedData['image'] = $filename;
+        } else {
             $validatedData['image'] = $request->oldImage;
         }
 
