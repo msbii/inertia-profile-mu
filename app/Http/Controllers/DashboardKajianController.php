@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Kajian;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\KategoriKajian;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Inertia\Inertia;
 
 class DashboardKajianController extends Controller
 {
@@ -74,8 +75,32 @@ class DashboardKajianController extends Controller
             'document'=> 'mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         ]);
         // check jika img tidak ada maka unsplash
-        if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->store('post-images','public');
+        // if ($request->file('image')) {
+        //     $validateData['image'] = $request->file('image')->store('post-images','public');
+        // }
+
+        if ($request->file('image')) 
+        {
+            // Simpan file asli ke storage/app/public/post-images/original
+            $originalPath = $request->file('image')->store('post-images/original', 'public');
+            $filename = basename($originalPath);
+
+            // Path thumbnail
+            $thumbnailPath = 'post-images/thumbnail/' . $filename;
+            $thumbnailFullPath = storage_path('app/public/' . $thumbnailPath);
+
+            // Pastikan folder thumbnail ada
+            if (!file_exists(dirname($thumbnailFullPath))) {
+                mkdir(dirname($thumbnailFullPath), 0777, true);
+            }
+
+            // Buat thumbnail (300x300)
+            $image = Image::read($request->file('image'))
+                ->cover(370, 250); // crop & resize biar square
+            $image->save($thumbnailFullPath);
+
+            // Simpan nama file (nanti bisa dipanggil sebagai asset('storage/post-images/original/'.$filename))
+            $validateData['image'] = $filename;
         }
 
         // // Mengambil file dari request
@@ -149,15 +174,45 @@ class DashboardKajianController extends Controller
         $validateData = $request->validate($rules);
         
         // check jika img tidak ada maka unsplash
+        // if ($request->file('image')) {
+        //     // Menghapus data foto lama supaya berganti baru
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $validateData['image'] = $request->file('image')->store('post-images', 'public');
+        // }else {
+        //     // Gunakan gambar lama
+        //     $validateData['image'] = $request->oldImage;
+        // }
+
+        // Proses upload gambar baru
         if ($request->file('image')) {
-            // Menghapus data foto lama supaya berganti baru
+            // Hapus gambar lama (original + thumbnail)
             if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+                Storage::disk('public')->delete('post-images/original/' . $request->oldImage);
+                Storage::disk('public')->delete('post-images/thumbnail/' . $request->oldImage);
             }
-            $validateData['image'] = $request->file('image')->store('post-images', 'public');
-        }else {
-            // Gunakan gambar lama
-            $validateData['image'] = $request->oldImage;
+
+            // Simpan gambar original
+            $originalPath = $request->file('image')->store('post-images/original', 'public');
+            $filename = basename($originalPath);
+
+            // Buat thumbnail
+            $thumbnailPath = 'post-images/thumbnail/' . $filename;
+            $thumbnailFullPath = storage_path('app/public/' . $thumbnailPath);
+
+            if (!file_exists(dirname($thumbnailFullPath))) {
+                mkdir(dirname($thumbnailFullPath), 0777, true);
+            }
+
+            $image = Image::read($request->file('image'))
+                ->cover(370, 250); // crop + resize
+            $image->save($thumbnailFullPath);
+
+            // Simpan nama file saja (atau path tergantung pilihan sebelumnya)
+            $validatedData['image'] = $filename;
+        } else {
+            $validatedData['image'] = $request->oldImage;
         }
 
         // Jika ada file baru

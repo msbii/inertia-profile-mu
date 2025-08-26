@@ -62,7 +62,7 @@ console.log("detail kajian:", props.post);
                                         >
                                             <img
                                                 v-if="post.image"
-                                                :src="`/storage/${post.image}`"
+                                                :src="`/storage/post-images/original/${post.image}`"
                                                 width="750"
                                                 height="450"
                                                 class="img-fluid"

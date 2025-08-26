@@ -416,7 +416,7 @@ console.log("posts:", props.posts);
 
                                         <img
                                             v-if="post.image"
-                                            :src="`/storage/${post.image}`"
+                                            :src="`/storage/post-images/thumbnail/${post.image}`"
                                             class="image"
                                             alt="{{ post.title }}"
                                         />
