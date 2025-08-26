@@ -361,7 +361,7 @@ console.log("posts:", props.posts);
                                     <div class="post-thumb">
                                         <Link :href="`/posts/${post.slug}`"
                                             ><img
-                                                :src="`/storage/${post.image}`"
+                                                :src="`/storage/post-images/thumbnail/${post.image}`"
                                                 alt=""
                                         /></Link>
                                     </div>
@@ -481,7 +481,7 @@ console.log("posts:", props.posts);
 
                                         <img
                                             v-if="post.image"
-                                            :src="`/storage/${post.image}`"
+                                            :src="`/storage/post-images/thumbnail/${post.image}`"
                                             class="image"
                                             alt="{{ post.title }}"
                                         />
@@ -542,7 +542,7 @@ console.log("posts:", props.posts);
 
                                         <img
                                             v-if="post.image"
-                                            :src="`/storage/${post.image}`"
+                                            :src="`/storage/post-images/thumbnail/${post.image}`"
                                             class="image"
                                             alt="{{ post.title }}"
                                         />
