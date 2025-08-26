@@ -61,7 +61,7 @@ console.log("latestPosts:", props.latestPosts);
                                             <img
                                                 :src="
                                                     post.image
-                                                        ? `/storage/${post.image}`
+                                                        ? `/storage/post-images/thumbnail/${post.image}`
                                                         : 'https://storage.googleapis.com/a1aa/image/fYtaLxmXcWwZE6OgwpSCiZjC55SLkvIj3QQshe5WZGwAookTA.jpg'
                                                 "
                                                 width="370"
