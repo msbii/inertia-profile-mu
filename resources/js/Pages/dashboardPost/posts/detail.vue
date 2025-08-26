@@ -65,12 +65,19 @@ console.log("detail Postingan:", props.post);
                                             class="d-flex justify-content-center"
                                         >
                                             <img
-                                                :src="`/storage/${post.image}`"
+                                                :src="`/storage/post-images/original/${post.image}`"
                                                 width="750"
                                                 height="450"
                                                 class="img-fluid"
                                                 alt="{{ post.category.name }}"
                                             />
+                                            <!-- <img
+                                                :src="`/storage/${post.image}`"
+                                                width="750"
+                                                height="450"
+                                                class="img-fluid"
+                                                alt="{{ post.category.name }}"
+                                            /> -->
                                         </div>
 
                                         <div
