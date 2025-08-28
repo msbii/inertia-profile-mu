@@ -87,7 +87,7 @@
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"
-                        class="img-preview img-fluid mb-3 col-sm-2"
+                        class="img-preview w-32 h-auto mb-3 rounded"
                     />
                     <input
                         type="file"
@@ -146,7 +146,10 @@
                 </div>
 
                 <!-- Submit -->
-                <button type="submit" class="btn btn-primary">
+                <button
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                >
                     Buat Postingan
                 </button>
             </form>

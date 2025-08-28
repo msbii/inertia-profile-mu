@@ -154,16 +154,6 @@ onMounted(() => {
                 <div>
                     <label for="image" class="block font-medium">Gambar</label>
                     <input type="file" @change="previewImage" />
-                    <!-- <img
-                        v-if="previewUrl"
-                        :src="previewUrl"
-                        class="img-preview img-fluid mb-3 col-sm-2"
-                    />
-                    <img
-                        v-else-if="form.oldImage"
-                        :src="`/storage/post-images/original/${form.oldImage}`"
-                        class="img-preview img-fluid mb-3 col-sm-2"
-                    /> -->
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"

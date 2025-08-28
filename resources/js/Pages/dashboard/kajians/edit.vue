@@ -73,12 +73,12 @@
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"
-                        class="img-preview img-fluid mb-3 col-sm-2"
+                        class="img-preview w-32 h-auto mb-3 rounded"
                     />
                     <img
                         v-else-if="form.oldImage"
                         :src="`/storage/post-images/original/${form.oldImage}`"
-                        class="img-preview img-fluid mb-3 col-sm-2"
+                        class="img-preview w-32 h-auto mb-3 rounded"
                     />
                     <input
                         type="hidden"
@@ -151,7 +151,10 @@
                     Perbarui Postingan
                 </button> -->
                 <!-- Submit -->
-                <button type="submit" class="btn btn-primary">
+                <button
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                >
                     perbarui Postingan
                 </button>
             </form>
