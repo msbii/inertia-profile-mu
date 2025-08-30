@@ -75,7 +75,7 @@
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[200px]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[300px]"
                                     >
                                         Judul
                                     </th>
@@ -113,7 +113,7 @@
 
                                     <!-- Judul -->
                                     <td
-                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap max-w-[200px]"
+                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap"
                                     >
                                         {{ post.title }}
                                     </td>
