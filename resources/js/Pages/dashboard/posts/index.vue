@@ -75,7 +75,7 @@
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[100px]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[100px] truncate"
                                     >
                                         Judul
                                     </th>
@@ -121,7 +121,7 @@
                                         </span>
                                     </th>
                                     <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 truncate"
                                     >
                                         {{ post.title }}
                                     </td>
