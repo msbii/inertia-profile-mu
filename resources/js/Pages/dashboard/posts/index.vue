@@ -80,7 +80,7 @@
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase bg-gray-100 text-gray-600 border"
+                                        class="px-6 py-3 text-xs font-semibold uppercase bg-gray-100 text-gray-600 border max-w-[200px] truncate text-left"
                                         :class="[
                                             color === 'light'
                                                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -159,10 +159,10 @@
                                             :href="`/dashboard/posts/${post.slug}`"
                                         >
                                             <button
-                                                class="btn btn-success mx-1 btn-view"
+                                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
                                             >
                                                 <i
-                                                    class="bi bi-file-earmark-text bg-info"
+                                                    class="bi bi-file-earmark-text text-white"
                                                 ></i>
                                                 Lihat
                                             </button>
