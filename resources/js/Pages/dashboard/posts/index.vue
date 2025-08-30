@@ -75,7 +75,7 @@
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[75px] truncate"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[100px]"
                                     >
                                         Judul
                                     </th>
