@@ -113,7 +113,7 @@
 
                                     <!-- Judul -->
                                     <td
-                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap truncate max-w-[200px]"
+                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap max-w-[200px]"
                                     >
                                         {{ post.title }}
                                     </td>
