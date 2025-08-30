@@ -1,7 +1,13 @@
 <template>
     <Layout>
-        <div class="max-w-3xl mx-auto mb-5 mt-6">
-            <!-- Judul -->
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4"></div>
+        </div>
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto mb-5">
             <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
 
             <!-- Tombol Aksi -->
@@ -11,21 +17,8 @@
                     href="/dashboard/posts"
                     class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15 19l-7-7 7-7"
-                        />
-                    </svg>
-                    Kembali
+                    <i class="bi bi-arrow-left"></i>
+                    Kembali ke semua Postingan Saya
                 </Link>
 
                 <!-- Edit -->
@@ -33,20 +26,7 @@
                     :href="`/dashboard/posts/${post.slug}/edit`"
                     class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-medium transition"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M11 4h2m-1 0v16m4-4H8m0 0l4-4m0 0l4 4"
-                        />
-                    </svg>
+                    <i class="bi bi-pencil-square"></i>
                     Ubah
                 </Link>
 
@@ -55,20 +35,7 @@
                     class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
                     @click="handleDelete(post.slug)"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
+                    <i class="bi bi-file-x"></i>
                     Hapus
                 </button>
             </div>
@@ -111,7 +78,7 @@ defineProps({
 
 // Hapus post
 function handleDelete(slug) {
-    if (confirm("Apakah Anda yakin ingin menghapus postingan ini?")) {
+    if (confirm("Are you sure?")) {
         router.delete(`/dashboard/posts/${slug}`);
     }
 }
