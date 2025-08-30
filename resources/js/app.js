@@ -6,8 +6,8 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
 // import "@/assets/styles/tailwind.css"; // atau file CSS dari Notus Admin kamu
 import "../css/app.css"; // default laravel vite + tailwind
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "toastr/build/toastr.min.css";
@@ -18,7 +18,7 @@ import $ from "jquery";
 window.$ = window.jQuery = $;
 
 // Impor Bootstrap jika dibutuhkan oleh AdminLTE
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Tambahkan ini
 import "@fortawesome/fontawesome-free/css/all.min.css";

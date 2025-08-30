@@ -35,7 +35,7 @@
                                 <Link href="/dashboard/posts/create">
                                     <button
                                         type="button"
-                                        class="btn btn-success my-2"
+                                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded my-2 flex items-center gap-2"
                                     >
                                         <i class="fas fa-plus"></i> Buat
                                         Postingan Baru
@@ -47,9 +47,12 @@
                                         v-model="search"
                                         type="text"
                                         placeholder="Cari postingan..."
-                                        class="form-input"
+                                        class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
-                                    <button type="submit" class="btn">
+                                    <button
+                                        type="submit"
+                                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                                    >
                                         Cari
                                     </button>
                                 </form>
@@ -77,7 +80,7 @@
                                         #
                                     </th>
                                     <th
-                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        class="px-6 py-3 text-xs font-semibold uppercase bg-gray-100 text-gray-600 border"
                                         :class="[
                                             color === 'light'
                                                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -169,7 +172,7 @@
                                             :href="`/dashboard/posts/${post.slug}/edit`"
                                         >
                                             <button
-                                                class="btn btn-warning mx-1 btn-edit"
+                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
                                             >
                                                 <i class="fas fa-edit"></i> Ubah
                                             </button>
@@ -177,7 +180,7 @@
 
                                         <!-- Tombol Hapus -->
                                         <button
-                                            class="btn btn-danger mx-1"
+                                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
                                             @click="handleDelete(post.slug)"
                                         >
                                             <i
