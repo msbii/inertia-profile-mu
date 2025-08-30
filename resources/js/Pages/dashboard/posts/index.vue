@@ -95,23 +95,13 @@
                                 <tr
                                     v-for="(post, index) in posts.data"
                                     :key="post.id"
+                                    class="border-b"
                                 >
+                                    <!-- Nomor urut -->
                                     <th
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+                                        class="px-6 py-4 text-xs text-left align-middle whitespace-nowrap"
                                     >
-                                        <!-- <img
-                                            :src="bootstrap"
-                                            class="h-12 w-12 bg-white rounded-full border"
-                                            alt="..."
-                                        /> -->
-                                        <span
-                                            class="ml-3 font-bold"
-                                            :class="[
-                                                color === 'light'
-                                                    ? 'text-blueGray-600'
-                                                    : 'text-white',
-                                            ]"
-                                        >
+                                        <span class="font-bold text-gray-700">
                                             {{
                                                 (posts.current_page - 1) *
                                                     posts.per_page +
@@ -120,52 +110,58 @@
                                             }}
                                         </span>
                                     </th>
+
+                                    <!-- Judul -->
                                     <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 truncate"
+                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap truncate max-w-[200px]"
                                     >
                                         {{ post.title }}
                                     </td>
+
+                                    <!-- Kategori -->
                                     <td
                                         v-if="post.category"
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap"
                                     >
                                         {{ post.category.name }}
                                     </td>
+
+                                    <!-- Aksi -->
                                     <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap flex items-center gap-2"
                                     >
                                         <!-- Tombol Lihat -->
                                         <Link
                                             :href="`/dashboard/posts/${post.slug}`"
                                         >
                                             <button
-                                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
+                                                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
                                             >
                                                 <i
-                                                    class="bi bi-file-earmark-text text-white"
+                                                    class="bi bi-file-earmark-text"
                                                 ></i>
                                                 Lihat
                                             </button>
                                         </Link>
+
                                         <!-- Tombol Ubah -->
                                         <Link
                                             :href="`/dashboard/posts/${post.slug}/edit`"
                                         >
                                             <button
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
+                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
                                             >
-                                                <i class="fas fa-edit"></i> Ubah
+                                                <i class="fas fa-edit"></i>
+                                                Ubah
                                             </button>
                                         </Link>
 
                                         <!-- Tombol Hapus -->
                                         <button
-                                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded mx-1 flex items-center gap-2"
+                                            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
                                             @click="handleDelete(post.slug)"
                                         >
-                                            <i
-                                                class="fas fa-trash bg-danger"
-                                            ></i>
+                                            <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
                                     </td>
