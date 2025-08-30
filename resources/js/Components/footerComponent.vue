@@ -1,107 +1,109 @@
 <template>
     <div>
         <!-- START FOOTER -->
-        <footer class="bg-gray-900 text-gray-300 py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8"
-                >
-                    <!-- Logo & Sosial -->
-                    <div>
-                        <Link href="/">
-                            <img :src="logoSrc" alt="Logo" class="h-12 mb-4" />
-                        </Link>
-                        <div class="flex space-x-3">
-                            <Link
-                                v-for="(icon, index) in socialIcons"
-                                :key="index"
-                                :href="icon.link"
-                                class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 hover:bg-emerald-600 transition"
-                            >
-                                <i :class="icon.icon"></i>
-                            </Link>
+        <div class="footer section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <Link href="/"
+                                ><img :src="logoSrc" alt="Logo"
+                            /></Link>
+                            <div class="social_profile">
+                                <ul>
+                                    <li
+                                        v-for="(icon, index) in socialIcons"
+                                        :key="index"
+                                    >
+                                        <Link
+                                            :href="icon.link"
+                                            :class="icon.class"
+                                        >
+                                            <i :class="icon.icon"></i>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Kategori -->
-                    <div>
-                        <h4 class="text-white font-semibold mb-4">Kategori</h4>
-                        <ul class="space-y-2">
-                            <li
-                                v-for="(item, index) in categories"
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <h4>Kategori</h4>
+                            <ul>
+                                <li
+                                    v-for="(item, index) in categories"
+                                    :key="index"
+                                >
+                                    <Link :href="item.link">{{
+                                        item.name
+                                    }}</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <h4>Tentang</h4>
+                            <ul>
+                                <li v-for="post in sejarah" :key="post.slug">
+                                    <Link :href="'/' + post.slug">{{
+                                        post.title
+                                    }}</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <h4>Ekosistem</h4>
+                            <ul>
+                                <li
+                                    v-for="(item, index) in ekosistem"
+                                    :key="index"
+                                >
+                                    <Link :href="item.link">{{
+                                        item.name
+                                    }}</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div
+                            class="single_footer"
+                            style="font-size: 15px; line-height: 1.7"
+                        >
+                            <h4>Info Kontak</h4>
+                            <div
+                                class="sf_contact"
+                                v-for="(info, index) in kontak"
                                 :key="index"
                             >
-                                <Link
-                                    :href="item.link"
-                                    class="hover:text-emerald-400 transition"
-                                    >{{ item.name }}</Link
-                                >
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Tentang -->
-                    <div>
-                        <h4 class="text-white font-semibold mb-4">Tentang</h4>
-                        <ul class="space-y-2">
-                            <li v-for="post in sejarah" :key="post.slug">
-                                <Link
-                                    :href="'/' + post.slug"
-                                    class="hover:text-emerald-400 transition"
-                                >
-                                    {{ post.title }}
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Ekosistem -->
-                    <div>
-                        <h4 class="text-white font-semibold mb-4">Ekosistem</h4>
-                        <ul class="space-y-2">
-                            <li v-for="(item, index) in ekosistem" :key="index">
-                                <Link
-                                    :href="item.link"
-                                    class="hover:text-emerald-400 transition"
-                                >
-                                    {{ item.name }}
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Kontak -->
-                    <div>
-                        <h4 class="text-white font-semibold mb-4">
-                            Info Kontak
-                        </h4>
-                        <div
-                            v-for="(info, index) in kontak"
-                            :key="index"
-                            class="flex items-start space-x-2 mb-3 text-sm"
-                        >
-                            <span :class="info.icon"></span>
-                            <p v-if="info.isLink">
-                                <Link
-                                    :href="info.link"
-                                    class="hover:text-emerald-400 transition"
-                                >
-                                    {{ info.text }}
-                                </Link>
-                            </p>
-                            <p v-else>{{ info.text }}</p>
+                                <span :class="info.icon"></span>
+                                <p v-if="info.isLink">
+                                    <Link :href="info.link">{{
+                                        info.text
+                                    }}</Link>
+                                </p>
+                                <p v-else>{{ info.text }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
 
         <!-- START FOOTER COPYRIGHT -->
-        <div class="bg-gray-800 py-4">
-            <div
-                class="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm"
-            >
-                &copy; {{ new Date().getFullYear() }} Perserikatan Muhammadiyah
+        <div class="foot_copy">
+            <div class="footer_copyright">
+                <p>
+                    &copy; {{ new Date().getFullYear() }} Perserikatan
+                    Muhammadiyah
+                </p>
             </div>
         </div>
         <!-- END FOOTER COPYRIGHT -->
@@ -112,17 +114,21 @@
 import { Link } from "@inertiajs/vue3";
 
 export default {
-    components: { Link },
-    props: { sejarah: Array },
+    components: {
+        Link,
+    },
+    props: {
+        sejarah: Array, // Data sejarah dikirim dari Laravel
+    },
     data() {
         return {
             logoSrc: "/img/Logo2.webp",
             socialIcons: [
-                { link: "#", icon: "fab fa-facebook-f" },
-                { link: "#", icon: "fab fa-twitter" },
-                { link: "#", icon: "fab fa-instagram" },
-                { link: "#", icon: "fab fa-youtube" },
-                { link: "#", icon: "fab fa-tiktok" },
+                { link: "#", class: "f_facebook", icon: "fab fa-facebook-f" },
+                { link: "#", class: "f_twitter", icon: "fab fa-twitter" },
+                { link: "#", class: "f_instagram", icon: "fab fa-instagram" },
+                { link: "#", class: "f_youtube", icon: "fab fa-youtube" },
+                { link: "#", class: "f_tiktok", icon: "fab fa-tiktok" },
             ],
             categories: [
                 { name: "Muhammadiyah", link: "/view/muhammadiyah" },
