@@ -152,7 +152,7 @@
                 </button> -->
                 <!-- Submit -->
                 <button type="submit" class="btn btn-primary">
-                    perbarui Postingan
+                    Perbarui Postingan
                 </button>
             </form>
         </div>

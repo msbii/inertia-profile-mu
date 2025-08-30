@@ -35,7 +35,7 @@
                                 <Link href="/dashboard/posts/create">
                                     <button
                                         type="button"
-                                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded my-2 flex items-center gap-2"
+                                        class="btn btn-success my-2"
                                     >
                                         <i class="fas fa-plus"></i> Buat
                                         Postingan Baru
@@ -47,12 +47,9 @@
                                         v-model="search"
                                         type="text"
                                         placeholder="Cari postingan..."
-                                        class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        class="form-input"
                                     />
-                                    <button
-                                        type="submit"
-                                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-                                    >
+                                    <button type="submit" class="btn">
                                         Cari
                                     </button>
                                 </form>
@@ -68,24 +65,44 @@
                             class="items-center w-full bg-transparent border-collapse"
                         >
                             <thead>
-                                <tr class="bg-gray-100 text-gray-600">
+                                <tr>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
+                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        :class="[
+                                            color === 'light'
+                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+                                        ]"
                                     >
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[300px]"
+                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        :class="[
+                                            color === 'light'
+                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+                                        ]"
                                     >
                                         Judul
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
+                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        :class="[
+                                            color === 'light'
+                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+                                        ]"
                                     >
                                         Kategori
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
+                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                        :class="[
+                                            color === 'light'
+                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+                                        ]"
                                     >
                                         Aksi
                                     </th>
@@ -95,13 +112,23 @@
                                 <tr
                                     v-for="(post, index) in posts.data"
                                     :key="post.id"
-                                    class="border-b"
                                 >
-                                    <!-- Nomor urut -->
                                     <th
-                                        class="px-6 py-4 text-xs text-left align-middle whitespace-nowrap"
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
                                     >
-                                        <span class="font-bold text-gray-700">
+                                        <!-- <img
+                                            :src="bootstrap"
+                                            class="h-12 w-12 bg-white rounded-full border"
+                                            alt="..."
+                                        /> -->
+                                        <span
+                                            class="ml-3 font-bold"
+                                            :class="[
+                                                color === 'light'
+                                                    ? 'text-blueGray-600'
+                                                    : 'text-white',
+                                            ]"
+                                        >
                                             {{
                                                 (posts.current_page - 1) *
                                                     posts.per_page +
@@ -110,58 +137,52 @@
                                             }}
                                         </span>
                                     </th>
-
-                                    <!-- Judul -->
                                     <td
-                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap"
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                                     >
                                         {{ post.title }}
                                     </td>
-
-                                    <!-- Kategori -->
                                     <td
                                         v-if="post.category"
-                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap"
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                                     >
                                         {{ post.category.name }}
                                     </td>
-
-                                    <!-- Aksi -->
                                     <td
-                                        class="px-6 py-4 text-xs align-middle whitespace-nowrap flex items-center gap-2"
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                                     >
                                         <!-- Tombol Lihat -->
                                         <Link
                                             :href="`/dashboard/posts/${post.slug}`"
                                         >
                                             <button
-                                                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
+                                                class="btn btn-success mx-1 btn-view"
                                             >
                                                 <i
-                                                    class="bi bi-file-earmark-text"
+                                                    class="bi bi-file-earmark-text bg-info"
                                                 ></i>
                                                 Lihat
                                             </button>
                                         </Link>
-
                                         <!-- Tombol Ubah -->
                                         <Link
                                             :href="`/dashboard/posts/${post.slug}/edit`"
                                         >
                                             <button
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
+                                                class="btn btn-warning mx-1 btn-edit"
                                             >
-                                                <i class="fas fa-edit"></i>
-                                                Ubah
+                                                <i class="fas fa-edit"></i> Ubah
                                             </button>
                                         </Link>
 
                                         <!-- Tombol Hapus -->
                                         <button
-                                            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded flex items-center gap-2 text-sm"
+                                            class="btn btn-danger mx-1"
                                             @click="handleDelete(post.slug)"
                                         >
-                                            <i class="fas fa-trash"></i>
+                                            <i
+                                                class="fas fa-trash bg-danger"
+                                            ></i>
                                             Hapus
                                         </button>
                                     </td>
