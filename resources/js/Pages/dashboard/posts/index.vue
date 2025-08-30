@@ -68,44 +68,24 @@
                             class="items-center w-full bg-transparent border-collapse"
                         >
                             <thead>
-                                <tr>
+                                <tr class="bg-gray-100 text-gray-600">
                                     <th
-                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                        :class="[
-                                            color === 'light'
-                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-                                        ]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
                                     >
                                         #
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-semibold uppercase bg-gray-100 text-gray-600 border max-w-[200px] truncate text-left"
-                                        :class="[
-                                            color === 'light'
-                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-                                        ]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left max-w-[200px] truncate"
                                     >
                                         Judul
                                     </th>
                                     <th
-                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                        :class="[
-                                            color === 'light'
-                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-                                        ]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
                                     >
                                         Kategori
                                     </th>
                                     <th
-                                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                                        :class="[
-                                            color === 'light'
-                                                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                                                : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-                                        ]"
+                                        class="px-6 py-3 text-xs font-semibold uppercase border text-left align-middle whitespace-nowrap"
                                     >
                                         Aksi
                                     </th>
