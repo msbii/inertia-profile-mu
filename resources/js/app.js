@@ -5,7 +5,7 @@ import { createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
 // import "@/assets/styles/tailwind.css"; // atau file CSS dari Notus Admin kamu
-// import "../css/app.css"; // default laravel vite + tailwind
+import "../css/app.css"; // default laravel vite + tailwind
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";

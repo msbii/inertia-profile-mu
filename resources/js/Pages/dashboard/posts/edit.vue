@@ -157,12 +157,12 @@ onMounted(() => {
                     <img
                         v-if="previewUrl"
                         :src="previewUrl"
-                        class="img-preview w-32 h-auto mb-3 rounded"
+                        class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <img
                         v-else-if="form.oldImage"
                         :src="`/storage/post-images/original/${form.oldImage}`"
-                        class="img-preview w-32 h-auto mb-3 rounded"
+                        class="img-preview img-fluid mb-3 col-sm-2"
                     />
                     <!-- <input
                         type="hidden"
@@ -196,10 +196,7 @@ onMounted(() => {
                     Perbarui Postingan
                 </button> -->
                 <!-- Submit -->
-                <button
-                    type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-                >
+                <button type="submit" class="btn btn-primary">
                     perbarui Postingan
                 </button>
             </form>
